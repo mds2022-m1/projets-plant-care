@@ -1,0 +1,7 @@
+{
+  "name": "Plant Care",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
