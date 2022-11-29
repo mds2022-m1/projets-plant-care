@@ -43,10 +43,10 @@ const App: React.FC = () => (
           <Route exact path="/log">
             <LogPage />
           </Route>
-          <Route exact path="/log-in">
+          <Route exact path="/login">
             <LogIn />
           </Route>
-          <Route path="/sign-up">
+          <Route path="/signup">
             <SignUp />
           </Route>
           <Route path="/plants">
