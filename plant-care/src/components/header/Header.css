@@ -24,3 +24,17 @@ ion-modal#example-modal {
   ion-modal#example-modal .wrapper {
     margin-bottom: 10px;
   }
+
+  .logo-place {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0.3rem;
+  }
+
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
