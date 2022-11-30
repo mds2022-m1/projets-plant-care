@@ -9,7 +9,7 @@ export class Task {
     uuid: number
 
     @ManyToOne(() => Plant, (plant) => plant.uuid)
-    uuid_plant: Plant
+    uuidPlant: Plant
     
     @Column()
     name: string
@@ -18,14 +18,14 @@ export class Task {
     note: string
 
     @Column()
-    frequency_type: string
+    frequencyType: string
 
     @Column()
-    last_action: Date
+    lastAction: Date
 
     @Column()
     month: string
 
     @Column()
-    action_frequency: number
+    actionFrequency: number
 }

@@ -8,7 +8,7 @@ export class User {
     uuid: number
 
     @Column()
-    uuid_github: string
+    uuidGithub: string
 
     @Column()
     name: string
