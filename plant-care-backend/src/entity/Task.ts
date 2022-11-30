@@ -1,15 +1,16 @@
-import { Column } from "typeorm"
+import { Column, ManyToOne } from "typeorm"
 import { PrimaryGeneratedColumn } from "typeorm"
 import { Entity } from "typeorm"
+import { Plant } from "./Plant"
 
 @Entity()
 export class Task {
     @PrimaryGeneratedColumn()
     uuid: number
 
-    @Column()
-    uuid_plant: string
-
+    @ManyToOne(() => Plant, (plant) => plant.uuid)
+    uuid_plant: Plant
+    
     @Column()
     name: string
 

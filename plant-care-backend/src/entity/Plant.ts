@@ -1,18 +1,19 @@
-import { Column } from "typeorm"
+import { Column, ManyToOne } from "typeorm"
 import { PrimaryGeneratedColumn } from "typeorm"
 import { Entity } from "typeorm"
+import { Place } from "./Place"
 
 @Entity()
 export class Plant {
     @PrimaryGeneratedColumn()
     uuid: number
 
-    @Column()
-    uuid_place: string
+    @ManyToOne(() => Place, (place) => place.uuid)
+    uuid_place: Place
 
     @Column()
     name: string
 
     @Column()
-    picture: number
+    picture: string
 }
