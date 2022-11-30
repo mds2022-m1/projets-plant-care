@@ -9,7 +9,7 @@ export class Place {
     uuid: number
 
     @ManyToOne(() => User, (user) => user.uuid)
-    uuid_user: User
+    uuidUser: User
 
 
     @Column()

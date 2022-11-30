@@ -12,7 +12,7 @@ import { User } from "./entity/User"
 AppDataSource.initialize()
     .then(async () => {
         const user = new User()
-        user.uuid_github = '141a5999-0a92-4ca2-9b23-3199a82d56ef'
+        user.uuidGithub = 'antoine-github'
         user.name = 'antoine'
         user.password = '123456'
         user.email = 'antoine@orange.fr'
@@ -22,12 +22,12 @@ AppDataSource.initialize()
 
         const place = new Place()
         place.name = 'salon'
-        place.uuid_user = user
+        place.uuidUser = user
         await AppDataSource.manager.save(place)
         console.log(Place, "has been saved")
 
         const plant = new Plant()
-        plant.uuid_place = place
+        plant.uuidPlace = place
         plant.name = 'tulipe'
         plant.picture = 'image.png'
         
@@ -37,13 +37,13 @@ AppDataSource.initialize()
         let date: Date = new Date();
 
         const task = new Task()
-        task.uuid_plant = plant
+        task.uuidPlant = plant
         task.name = 'arrosage'
         task.note = 'bien arroser le pied'
-        task.frequency_type = 'Month/Year/Day'
-        task.last_action = date
+        task.frequencyType = 'Month/Year/Day'
+        task.lastAction = date
         task.month = '[2.3.4]'
-        task.action_frequency = 2
+        task.actionFrequency = 2
         await AppDataSource.manager.save(task)
         console.log(Task, "has been saved")
       })

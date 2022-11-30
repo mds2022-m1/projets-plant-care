@@ -9,7 +9,7 @@ export class Plant {
     uuid: number
 
     @ManyToOne(() => Place, (place) => place.uuid)
-    uuid_place: Place
+    uuidPlace: Place
 
     @Column()
     name: string

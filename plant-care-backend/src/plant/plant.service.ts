@@ -11,7 +11,7 @@ export class PlantService {
             const plant = new Plant;
             plant.name = createPlantRequest.name;
             plant.picture = createPlantRequest.picture;
-            plant.uuid_place = createPlantRequest.uuid_place;
+            plant.uuidPlace = createPlantRequest.uuidPlace;
 
             await this.plantRepository.save(plant);
 
