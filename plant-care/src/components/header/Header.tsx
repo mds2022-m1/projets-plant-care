@@ -1,27 +1,45 @@
-import { IonButtons, IonContent, IonHeader, IonMenu, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonImg, IonItem, IonLabel, IonList, IonMenu, IonMenuButton, IonModal, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { menu } from 'ionicons/icons';
 import './Header.css';
 
+import { personCircle } from 'ionicons/icons';
+import { useRef } from 'react';
+
+
+
 const Header: React.FC = () => {
+
+  const modal = useRef<HTMLIonModalElement>(null);
+
+  function dismiss() {
+    modal.current?.dismiss();
+  }
+  
     return (
 <>
-      <IonMenu contentId="main-content">
         <IonHeader>
-          <IonToolbar color="tertiary">
-            <IonTitle>Menu Content</IonTitle>
+          <IonToolbar color="gunmetal">
+          <IonButton fill="clear" id="open-custom-dialog"><IonIcon icon={menu} color="gold" /></IonButton>
           </IonToolbar>
+          <IonImg src="../../../public/assets/logo/plant-care-logo.svg"></IonImg>
         </IonHeader>
-        <IonContent className="ion-padding">This is the menu content.</IonContent>
-      </IonMenu>
-      <IonPage id="main-content">
-        <IonHeader>
-          <IonToolbar>
-            <IonButtons slot="start">
-              <IonMenuButton></IonMenuButton>
-            </IonButtons>
-            <IonTitle>Menu</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-      </IonPage>
+
+        <IonModal id="example-modal" ref={modal} trigger="open-custom-dialog">
+          <div className="wrapper">
+            <h1>Plant'Care</h1>
+            <IonList lines="none">
+              <IonItem button={true} detail={false} onClick={dismiss}>
+                <IonLabel>Se deconnecter</IonLabel>
+              </IonItem>
+              <IonItem button={true} detail={false} onClick={dismiss}>
+                <IonLabel>RGPD</IonLabel>
+              </IonItem>
+              <IonItem button={true} detail={false} onClick={dismiss}>
+                <IonLabel>Contact</IonLabel>
+              </IonItem>
+            </IonList>
+          </div>
+        </IonModal>
     </>
     );
 };
