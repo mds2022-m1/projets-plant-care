@@ -8,3 +8,6 @@ npm run start /* lance le script de création de la base */
 ## Init supabasen  
 
 npm install @supabase/supabase-js
+
+Utiliser typeorm : "start:typeorm": "ts-node src/index.ts"
+Lancer le backend : "start": "ts-node src/main.ts"
