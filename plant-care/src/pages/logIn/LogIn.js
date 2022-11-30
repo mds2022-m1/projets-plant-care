@@ -47,8 +47,8 @@ function LogIn() {
     return (
     <div className="App">
       <h1 className='titlelogin'>Hello, please sign in!</h1>
-      <button className='button' onClick={signInWithGithub}>Connexion GitHub</button>
-      <button className='button' onClick={signInWithGoogle}>Connexion Google</button>
+      <button className='button-login' onClick={signInWithGithub}>Connexion GitHub</button>
+      <button className='button-login' onClick={signInWithGoogle}>Connexion Google</button>
     </div>
   );
 

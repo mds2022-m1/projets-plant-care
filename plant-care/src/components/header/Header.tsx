@@ -24,7 +24,7 @@ const Header: React.FC = () => {
               <IonButton fill="clear" id="open-custom-dialog"><IonIcon icon={menu} color="gold" /></IonButton>
             </div>
             <div className="logo-place">
-              {PlantCareLogo(50)}
+              <IonButton href="/dashboard" fill="clear" className="button-logo">{PlantCareLogo(50)}</IonButton>
             </div>
           </div>
         </IonToolbar>
@@ -42,6 +42,9 @@ const Header: React.FC = () => {
             </IonItem>
             <IonItem button={true} detail={false} onClick={dismiss}>
               <IonLabel>Contact</IonLabel>
+            </IonItem>
+            <IonItem button={true} detail={false} onClick={dismiss}>
+              <IonLabel>Paramètres</IonLabel>
             </IonItem>
           </IonList>
         </div>

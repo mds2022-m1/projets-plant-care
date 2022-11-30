@@ -114,6 +114,9 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-purple-contrast-rgb: 255, 255, 255;
   --ion-color-purple-shade: #95374b;
   --ion-color-purple-tint: #b25266;
+
+  /** font-family **/
+  --ion-font-family: 'AppFont';
 }
 
 .ion-color-gold {
@@ -160,6 +163,11 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-shade: var(--ion-color-purple-shade);
   --ion-color-tint: var(--ion-color-purple-tint);
 }
+
+@font-face {
+  font-family: AppFont;
+  src: url("../../public/assets/fonts/AkayaKanadaka-Regular.ttf");
+  }
 
 @media (prefers-color-scheme: dark) {
   /*
