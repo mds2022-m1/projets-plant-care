@@ -5,8 +5,8 @@ import { Place } from "./Place"
 
 @Entity()
 export class Plant {
-    @PrimaryGeneratedColumn()
-    uuid: number
+    @PrimaryGeneratedColumn('uuid')
+    uuid: string
 
     @ManyToOne(() => Place, (place) => place.uuid)
     uuidPlace: Place

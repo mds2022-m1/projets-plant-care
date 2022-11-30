@@ -4,8 +4,8 @@ import { Entity } from "typeorm"
 
 @Entity()
 export class User {
-    @PrimaryGeneratedColumn()
-    uuid: number
+    @PrimaryGeneratedColumn('uuid')
+    uuid: string
 
     @Column()
     uuidGithub: string

@@ -5,8 +5,8 @@ import { Plant } from "./Plant"
 
 @Entity()
 export class Task {
-    @PrimaryGeneratedColumn()
-    uuid: number
+    @PrimaryGeneratedColumn('uuid')
+    uuid: string
 
     @ManyToOne(() => Plant, (plant) => plant.uuid)
     uuidPlant: Plant
