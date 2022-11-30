@@ -16,12 +16,20 @@ function LogIn() {
   }, [])
   async function checkUser() {
     const token = localStorage.getItem("sb-ebamkhaelqkqphvbufuv-auth-token")
+    
     const user = await supabase.auth.getUser(token.provider_token);
+    localStorage.setItem("test", JSON.stringify(user))
     setUser(user.data.user);
   } 
   async function signInWithGithub() {
     await supabase.auth.signInWithOAuth({
       provider: 'github'
+    });
+  }
+
+  async function signInWithGoogle() {
+    await supabase.auth.signInWithOAuth({
+      provider: 'google'
     });
   }
   async function signOut() {
@@ -31,17 +39,21 @@ function LogIn() {
   if (user) {
     return (
       <div className="App">
-        <h1>Hello, {user.email}</h1>
-        <button onClick={signOut}>Sign out</button>
+        <h1 className='titlelogin'>Salut gros BG, {user.user_metadata.user_name}</h1>
+        <button className='button' onClick={signOut}>Deconnexion</button>
       </div>
     )
   }
     return (
     <div className="App">
-      <h1>Hello, please sign in!</h1>
-      <button onClick={signInWithGithub}>Sign In</button>
+      <h1 className='titlelogin'>Hello, please sign in!</h1>
+      <button className='button' onClick={signInWithGithub}>Connexion GitHub</button>
+      <button className='button' onClick={signInWithGoogle}>Connexion Google</button>
     </div>
   );
+
+
+  
 }
 
 export default LogIn;
