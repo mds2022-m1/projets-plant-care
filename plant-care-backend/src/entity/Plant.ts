@@ -8,12 +8,20 @@ export class Plant {
     @PrimaryGeneratedColumn('uuid')
     uuid: string
 
-    @ManyToOne(() => Place, (place) => place.uuid)
+    @ManyToOne(() => Place, (place) => place.uuid, {
+        onDelete : "CASCADE"
+    })
     uuidPlace: Place
 
-    @Column()
-    name: string
+    @Column({
+        type: "varchar",
+        length: 20,
+        nullable: false})
+    name: string        
 
-    @Column()
+    @Column({
+        type: "varchar",
+        length: 20,
+        nullable: true})
     picture: string
 }

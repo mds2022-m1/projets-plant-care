@@ -8,7 +8,9 @@ export class Place {
     @PrimaryGeneratedColumn('uuid')
     uuid: string
 
-    @ManyToOne(() => User, (user) => user.uuid)
+    @ManyToOne(() => User, (user) => user.uuid, {
+        onDelete : "CASCADE"
+    })
     uuidUser: User
 
 

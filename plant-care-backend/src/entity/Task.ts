@@ -8,7 +8,9 @@ export class Task {
     @PrimaryGeneratedColumn('uuid')
     uuid: string
 
-    @ManyToOne(() => Plant, (plant) => plant.uuid)
+    @ManyToOne(() => Plant, (plant) => plant.uuid, {
+        onDelete : "CASCADE"
+    })
     uuidPlant: Plant
     
     @Column()
