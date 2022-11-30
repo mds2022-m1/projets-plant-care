@@ -5,16 +5,22 @@ import { Plant } from '../entity/Plant';
 
 @Injectable()
 export class PlantService {
-    constructor(@InjectRepository(Plant) private plantRepository: Repository<Plant>) {}
+    constructor(@InjectRepository(Plant) private plantRepository: Repository<Plant>) { }
 
-        public async createPlant(createPlantRequest: Plant) {
-            const plant = new Plant;
-            plant.name = createPlantRequest.name;
-            plant.picture = createPlantRequest.picture;
-            plant.uuidPlace = createPlantRequest.uuidPlace;
+    public async getPlant(): Promise<Plant[]> {
+        const plants = await this.plantRepository.find();
 
-            await this.plantRepository.save(plant);
+        return plants;
+    }
 
-            return plant;            
-        }
+    public async createPlant(createPlantRequest: Plant): Promise<Plant> {
+        const plant = new Plant;
+        plant.name = createPlantRequest.name;
+        plant.picture = createPlantRequest.picture;
+        plant.uuidPlace = createPlantRequest.uuidPlace;
+
+        await this.plantRepository.save(plant);
+
+        return plant;
+    }
 }

@@ -8,12 +8,18 @@ export class PlantController {
   constructor(private readonly plantService: PlantService) { }
 
   @Post()
-  public async createOne(@Body() createPlantRequest: Plant) {
+  public async createOne(@Body() createPlantRequest: Plant): Promise<Plant> {
     const res = await this.plantService.createPlant(createPlantRequest);
 
     return res;
   }
-  
+
+  @Get()
+  public async findAll(): Promise<Plant[]> {
+    const res = await this.plantService.getPlant();
+    return res;
+  }
+
   // //   @Post()
   // //   create(@Body() createPlantDto: PlantDao) {
   // //     return 'This action adds a new plant';
@@ -24,10 +30,6 @@ export class PlantController {
   //     res.status(HttpStatus.CREATED).send();
   //   }
 
-  //   @Get()
-  //   findAll(@Res() res: Response) {
-  //      res.status(HttpStatus.OK).json([]);
-  //   }
 
 
   // //   //TODO gérer la valeur de retour
