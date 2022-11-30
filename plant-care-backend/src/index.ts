@@ -1,6 +1,6 @@
 import "reflect-metadata"
 import { DataSource } from "typeorm"
-import { AppDataSource } from "../dist"
+import { AppDataSource } from "./data-source"
 import { Place } from "./entity/Place"
 import { Plant } from "./entity/Plant"
 import { Task } from "./entity/Task"
@@ -12,7 +12,7 @@ import { User } from "./entity/User"
 AppDataSource.initialize()
     .then(async () => {
         const user = new User()
-        user.uuid_github = 'antoine-github'
+        user.uuid_github = '141a5999-0a92-4ca2-9b23-3199a82d56ef'
         user.name = 'antoine'
         user.password = '123456'
         user.email = 'antoine@orange.fr'

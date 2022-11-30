@@ -5,7 +5,7 @@ import { Plant } from "./entity/Plant"
 import { Task } from "./entity/Task"
 import { User } from "./entity/User"
 
-export const appDataSource = new DataSource({
+export const AppDataSource = new DataSource({
     type: "mysql",
     host: "localhost",
     port: 3306,
