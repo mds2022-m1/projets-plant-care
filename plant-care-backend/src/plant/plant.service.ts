@@ -7,10 +7,15 @@ import { Plant } from '../entity/Plant';
 export class PlantService {
     constructor(@InjectRepository(Plant) private plantRepository: Repository<Plant>) { }
 
-    public async getPlant(): Promise<Plant[]> {
-        const plants = await this.plantRepository.find();
+    public getPlant(): Promise<Plant[]> {
+        return this.plantRepository.find();
+    }
 
-        return plants;
+    public async getPlantById(uuid: string): Promise<Plant> {
+        const plant = await this.plantRepository.findOne({
+            where: { uuid }
+        });
+        return plant;
     }
 
     public async createPlant(createPlantRequest: Plant): Promise<Plant> {
@@ -22,5 +27,21 @@ export class PlantService {
         await this.plantRepository.save(plant);
 
         return plant;
+    }
+
+    public async updatePlant(uuid: string, updatePlantRequest: Plant): Promise<Plant> {
+        const plant = new Plant;
+        plant.name = updatePlantRequest.name;
+        plant.picture = updatePlantRequest.picture;
+        plant.uuidPlace = updatePlantRequest.uuidPlace;
+
+        await this.plantRepository.update(uuid, plant);
+
+        return plant;
+    }
+
+    //TODO
+    public async deletePlant(uuid: string){
+        await this.plantRepository.delete(uuid);
     }
 }

@@ -3,6 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { DBConfig } from './data-source';
 import { Place } from './entity/Place';
 import { Plant } from './entity/Plant';
 import { Task } from './entity/Task';
@@ -11,19 +12,7 @@ import { PlantModule } from './plant/plant.module';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot(
-      {
-        type: "mysql",
-        host: "localhost",
-        port: 3306,
-        username: "root",
-        password: "",
-        database: "mds",
-        entities: [Place, Plant, Task, User],
-        synchronize: true,
-        logging: false,
-      }
-    ),
+    TypeOrmModule.forRoot(DBConfig),
     PlantModule
   ],
   controllers: [

@@ -1,11 +1,12 @@
+import { TypeOrmModuleOptions,  } from "@nestjs/typeorm"
 import "reflect-metadata"
-import { DataSource } from "typeorm"
+import { DataSource, DataSourceOptions } from "typeorm"
 import { Place } from "./entity/Place"
 import { Plant } from "./entity/Plant"
 import { Task } from "./entity/Task"
 import { User } from "./entity/User"
 
-export const AppDataSource = new DataSource({
+export const DBConfig: TypeOrmModuleOptions & DataSourceOptions ={
     type: "mysql",
     host: "localhost",
     port: 3306,
@@ -14,5 +15,5 @@ export const AppDataSource = new DataSource({
     database: "mds",
     entities: [Place, Plant, Task, User],
     synchronize: true,
-    logging: false,
-})
+    logging: false
+}

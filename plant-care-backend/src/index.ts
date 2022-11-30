@@ -1,10 +1,12 @@
 import "reflect-metadata"
 import { DataSource } from "typeorm"
-import { AppDataSource } from "./data-source"
+import { DBConfig } from "./data-source"
 import { Place } from "./entity/Place"
 import { Plant } from "./entity/Plant"
 import { Task } from "./entity/Task"
 import { User } from "./entity/User"
+
+const AppDataSource = new DataSource(DBConfig)
 
 // to initialize initial connection with the database, register all entities
 // and "synchronize" database schema, call "initialize()" method of a newly created database
