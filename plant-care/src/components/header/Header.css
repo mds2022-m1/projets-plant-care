@@ -38,3 +38,7 @@ ion-modal#example-modal {
   flex-direction: row;
   justify-content: space-between;
 }
+
+.button-logo {
+  height: 100%;
+}

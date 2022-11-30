@@ -37,7 +37,7 @@ function PlantCareLogo(width) {
         r="235"
         fillOpacity="0"
         stroke="#FDC985"
-        strokeWidth="15"
+        strokeWidth="30"
       ></circle>
 <rect x="251" y="200" width="12" height="100" rx="4" fill="#FDC985"/>
 <path d="M132.203 92.6263L101.029 110.961L98.105 104.68L132.203 92.6263Z"  transform="translate(5.102 22.252) scale(2.5)" fill="#FDC985"/>

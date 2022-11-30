@@ -1,0 +1,55 @@
+.task {
+    color: var(--ion-color-mountain);
+    font-size: x-large;
+    display: flex;
+    align-items: center;    
+}
+
+ion-icon {
+    margin-right: 0.5rem;
+}
+
+ion-card {
+    height:200px;
+}
+
+.container-sticker {
+    min-width: 400px;
+}
+
+ion-card-header {
+    padding-bottom: 0;
+}
+
+.picture {
+    border: 3px solid var(--ion-color-gold);
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.date {
+    color: white;
+    font-size: x-large;
+}
+
+.plant-name {
+    color: var(--ion-color-gold);
+    font-size: x-large;
+}
+
+.contain-picture {
+    width: 120px;
+    padding: 10px;
+}
+
+.zone {
+    color: white;
+    font-size: large;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.container-text {
+    padding-left: 0px;
+}
