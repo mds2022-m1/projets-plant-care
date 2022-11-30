@@ -15,17 +15,17 @@ export class Task {
     name: string
 
     @Column()
-    note: number
+    note: string
 
     @Column()
-    action_frequency: number
+    frequency_type: string
 
     @Column()
     last_action: Date
 
     @Column()
-    action_type: number
+    month: string
 
     @Column()
-    month: number
+    action_frequency: number
 }

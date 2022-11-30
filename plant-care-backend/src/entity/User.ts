@@ -8,6 +8,9 @@ export class User {
     uuid: number
 
     @Column()
+    uuid_github: string
+
+    @Column()
     name: string
 
     @Column()
@@ -17,5 +20,6 @@ export class User {
     email: string
 
     @Column()
-    avatar: number
+    avatar: string
 }
+    

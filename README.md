@@ -2,4 +2,9 @@
 ## Init typeorm 
 http://localhost:3000/  
 typeorm entity:create src/entity/test  
-npm run start /* lance le script de création de la base */
+npm run start /* lance le script de création de la base */  
+
+
+## Init supabasen  
+
+npm install @supabase/supabase-js
