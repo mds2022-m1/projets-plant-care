@@ -1,5 +1,4 @@
 import { IonSelect, IonSelectOption } from "@ionic/react";
-import React from "react";
 
 const Select = ({data, defaultValue, handleClick}) => {
     const option = () => {
@@ -11,7 +10,7 @@ const Select = ({data, defaultValue, handleClick}) => {
     }
 
     return (
-        <IonSelect interface="popover" value={defaultValue}  onIonChange={handleClick} >
+        <IonSelect interface="popover" value={defaultValue} onIonChange={handleClick} >
             {option()}
         </IonSelect>
     );

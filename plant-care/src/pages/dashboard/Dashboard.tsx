@@ -1,4 +1,4 @@
-import { IonButton, IonCard, IonContent, IonDatetime, IonHeader, IonIcon, IonItem, IonLabel, IonList, IonModal, IonPage, IonSelect, IonSelectOption, IonTitle, IonToolbar } from '@ionic/react';
+import { IonButton, IonContent, IonDatetime, IonIcon, IonModal, IonPage } from '@ionic/react';
 import Header from '../../components/header/Header';
 import Footer from '../../components/footer/Footer';
 import Fab from '../../components/fab/Fab';
@@ -24,9 +24,11 @@ const Dashboard: React.FC = () => {
     <IonPage>
       <Header />
       <IonContent>
-        <Fab link=""/>
+        <Fab link="/personalized-task"/>
         <div className='date-line'>
+          <div className="ion-select">
       <Select data={["Aujourd'hui", "Bientôt", "Ce mois-ci"]} defaultValue="Aujourd'hui" handleClick={(e: { target: { value: any; }; }) => console.log(e.target.value)}/>
+      </div>
       <IonButton fill="clear" id="open-calender" expand="block"><IonIcon icon={calendar} color="gunmetal"></IonIcon></IonButton>
       </div>
       {/*Open a modal when we click on the icon of the calendar */}
