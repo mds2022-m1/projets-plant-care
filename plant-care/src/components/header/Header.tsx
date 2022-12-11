@@ -18,13 +18,13 @@ const Header: React.FC = () => {
   return (
     <>
       <IonHeader>
-        <IonToolbar color="gunmetal">
+        <IonToolbar color="gunmetal" className='container-header'>
           <div className='container'>
             <div>
-              <IonButton fill="clear" id="open-custom-dialog"><IonIcon icon={menu} color="gold" /></IonButton>
+              <IonButton fill="clear" id="open-custom-dialog" className='burger'><IonIcon icon={menu} color="gold" /></IonButton>
             </div>
             <div className="logo-place">
-              <IonButton href="/dashboard" fill="clear" className="button-logo">{PlantCareLogo(50)}</IonButton>
+              <IonButton href="/dashboard" fill="clear" className="button-logo">{PlantCareLogo(40)}</IonButton>
             </div>
           </div>
         </IonToolbar>

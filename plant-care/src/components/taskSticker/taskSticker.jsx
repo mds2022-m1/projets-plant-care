@@ -51,7 +51,7 @@ const TaskSticker = ({task, date, plantName, zone, picture}) => {
                 </IonRow>
                 </IonCardHeader>
                 <IonCardContent>
-                <IonRow class="ion-align-items-center">
+                <IonRow class="ion">
                 <div className="contain-picture"><img alt="Image de l'utilisateur" src="assets/image/tulipe.png" className="picture"></img></div>
                 <IonCol>
                     <span className="date">{formatDate(date)}</span>{showLate()} <br/>

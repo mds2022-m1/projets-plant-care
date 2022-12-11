@@ -47,3 +47,30 @@
   ion-modal#calendar-modal .wrapper {
     margin-bottom: 10px;
   }
+
+  .container-line {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .date-line {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    padding-top: 30px;
+  }
+
+  .line {
+    margin-top: 15px;
+    height: 2px;
+    background: var(--ion-color-gold);
+    width: 50%;
+  }
+
+  .task-done {
+    padding-top: 5px;
+    font-size: 18px;
+  }

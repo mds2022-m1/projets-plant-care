@@ -42,3 +42,14 @@ ion-modal#example-modal {
 .button-logo {
   height: 100%;
 }
+
+.burger {
+  font-size: 25px;
+  translate: -18px;
+}
+
+.container-header {
+  height: 50px;
+}
+
+

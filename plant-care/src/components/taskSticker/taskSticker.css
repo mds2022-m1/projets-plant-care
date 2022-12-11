@@ -1,8 +1,9 @@
 .task {
     color: var(--ion-color-mountain);
-    font-size: xx-large;
+    font-size: large;
     display: flex;
     align-items: center;    
+    padding-bottom: 2px;
 }
 
 ion-icon {
@@ -10,12 +11,17 @@ ion-icon {
 }
 
 ion-card {
-    height:175px;
+    height:110px;
     border-radius: 10px;
 }
 
+ion-col {
+    padding: 0px;
+    padding-top: 3px;
+}
+
 .container-sticker {
-    min-width: 550px;
+    min-width: 310px;
 }
 
 ion-card-header {
@@ -31,24 +37,24 @@ ion-card-header {
 
 .date {
     color: white;
-    font-size: xx-large;
+    font-size: medium;
     margin-bottom: 0px;
 }
 
 .plant-name {
     color: var(--ion-color-gold);
-    font-size: x-large;
+    font-size: large;
 }
 
 .contain-picture {
-    width: 110px;
-    padding: 10px;
-    padding-top: 0px;
+    width: 65px;
+    padding-right: 10px;
+    padding-top: 6px;
 }
 
 .zone {
     color: white;
-    font-size: large;
+    font-size: small;
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
@@ -61,11 +67,11 @@ ion-card-header {
 .late {
     color: var(--ion-color-purple);
     padding-left: 10px;
-    font-size: large;
+    font-size: small;
 }
 
 .check-mark {
-    font-size: 60px;
-    position: fixed;
-    right:50px;
+    font-size: 30px;
+    position: absolute;
+    right:10px;
 }

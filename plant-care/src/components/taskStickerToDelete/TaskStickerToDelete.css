@@ -1,0 +1,57 @@
+.task-to-delete {
+    color: white;
+    font-size: 18px;
+    display: flex;
+    align-items: flex-start;    
+}
+
+
+ion-card-header {
+    padding-bottom: 0;
+    padding-top: 0;
+}
+
+ion-card-content {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.picture {
+    border: 3px solid var(--ion-color-gold);
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.date {
+    color: white;
+    font-size: medium;
+    margin-bottom: 0px;
+}
+
+.plant-name {
+    color: var(--ion-color-gold);
+    font-size: large;
+}
+
+.contain-picture-delete {
+    width: 70px;
+    padding: 10px;
+    padding-top: 0px;
+    padding-left: 0px;
+}
+
+.container-text {
+    padding-left: 0px;
+}
+
+.container-sticker-delete {
+    height: 90px;
+    min-width: 310px;
+}
+
+.button-delete {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 30px;
+    padding-top: 10px;
+}
