@@ -1,4 +1,4 @@
-import { IonButton, IonButtons, IonContent, IonGrid, IonHeader, IonIcon, IonImg, IonItem, IonLabel, IonList, IonMenu, IonMenuButton, IonModal, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonButton, IonHeader, IonIcon, IonItem, IonLabel, IonList, IonModal, IonToolbar } from '@ionic/react';
 import { menu } from 'ionicons/icons';
 import './Header.css';
 

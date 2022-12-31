@@ -21,7 +21,7 @@ ion-col {
 }
 
 .container-sticker {
-    min-width: 310px;
+    min-width: 325px;
 }
 
 ion-card-header {
@@ -74,4 +74,9 @@ ion-card-header {
     font-size: 30px;
     position: absolute;
     right:10px;
+}
+
+.click-checkmark {
+    font-size: 30px;
+    translate: -38px -10px
 }

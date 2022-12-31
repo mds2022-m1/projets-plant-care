@@ -45,7 +45,7 @@ ion-card-content {
 }
 
 .container-sticker-delete {
-    height: 90px;
+    height: 100px;
     min-width: 310px;
 }
 
@@ -54,4 +54,10 @@ ion-card-content {
     justify-content: flex-end;
     font-size: 30px;
     padding-top: 10px;
+}
+
+.delete-button {
+    font-size: 30px;
+    position: absolute;
+    translate: 55px -35px;
 }
