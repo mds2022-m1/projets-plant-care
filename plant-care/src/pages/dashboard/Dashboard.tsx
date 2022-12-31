@@ -5,7 +5,7 @@ import Fab from '../../components/fab/Fab';
 import './Dashboard.css';
 import Select from '../../components/select/Select';
 import TaskSticker from '../../components/taskSticker/taskSticker';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import TaskStickerToDelete from '../../components/taskStickerToDelete/TaskStickerToDelete';
 import moment from 'moment';
 
@@ -142,7 +142,7 @@ const Dashboard: React.FC = () => {
       const filterTaskToDo = plant.filter((task) => moment(task.date, 'YYYY-MM-DD').isBefore(thisMonth) && task.done === false);
       filterTaskToDo.sort((a, b) => {
         return new Date(a.date).getTime() - new Date(b.date).getTime();
-      });
+      }); 
       setTaskToDo(filterTaskToDo);
       setSelectedButton(value);
     }

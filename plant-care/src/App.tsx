@@ -31,6 +31,7 @@ import PlantPage from './pages/plantPage/PlantPage';
 import Dashboard from './pages/dashboard/Dashboard';
 import LastPage from './pages/lastPage/LastPage';
 import PersonalizedTask from './pages/personalizedTask/PersonalizedTask';
+import AddZone from './pages/addZone/AddZone';
 
 setupIonicReact();
 
@@ -61,6 +62,9 @@ const App: React.FC = () => (
           </Route>
           <Route path="/personalized-task">
             <PersonalizedTask />
+          </Route>
+          <Route path="/add-zone">
+            <AddZone />
           </Route>
           <Route exact path="/">
             <Route
