@@ -1,4 +1,4 @@
-.custom-input {
+  ion-input.custom-input {
     width: 85%;
     height: 40px;
     border: 1.5px solid;
@@ -8,7 +8,11 @@
     box-sizing: border-box;
     margin-top: 6px;
     margin-bottom: 16px;
-    resize: vertical;
+    resize: vertical;  
+    --padding-bottom: 10px;
+    --padding-end: 10px;
+    --padding-start: 20px;
+    --padding-top: 10px;
   }
 
   .container-form {
