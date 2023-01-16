@@ -29,5 +29,8 @@ export class Task {
     month: string
 
     @Column()
+    done: string
+
+    @Column()
     actionFrequency: number
 }
