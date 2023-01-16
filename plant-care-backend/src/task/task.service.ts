@@ -26,6 +26,7 @@ export class TaskService {
         task.lastAction = createTaskRequest.lastAction;
         task.month = createTaskRequest.month;
         task.actionFrequency = createTaskRequest.actionFrequency;
+        task.uuidPlant = createTaskRequest.uuidPlant;
         
 
         await this.taskRepository.save(task);
@@ -41,6 +42,7 @@ export class TaskService {
         task.lastAction = updateTaskRequest.lastAction;
         task.month = updateTaskRequest.month;
         task.actionFrequency = updateTaskRequest.actionFrequency;
+        task.uuidPlant = updateTaskRequest.uuidPlant;
 
         await this.taskRepository.update(uuid, task);
 

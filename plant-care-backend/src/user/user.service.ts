@@ -36,6 +36,8 @@ export class UserService {
         user.email = updateUserRequest.email;
         user.password = updateUserRequest.password;
         user.avatar = updateUserRequest.avatar;
+        user.notif = updateUserRequest.notif;
+        user.delayNotif = updateUserRequest.delayNotif;
 
         await this.userRepository.update(uuid, user);
 

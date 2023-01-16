@@ -21,5 +21,11 @@ export class User {
 
     @Column()
     avatar: string
+
+    @Column({default: '09:00'})
+    notif: string
+
+    @Column({default: '4'})
+    delayNotif: string
 }
     

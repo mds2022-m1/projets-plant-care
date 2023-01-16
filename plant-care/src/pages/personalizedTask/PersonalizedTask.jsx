@@ -2,10 +2,17 @@ import { IonButton, IonContent, IonDatetime, IonDatetimeButton, IonInput, IonLab
 import './PersonalizedTask.css';
 import HeaderReturn from '../../components/headerReturn/HeaderReturn';
 import Select from '../../components/select/Select';
+import { create } from '../../axios/Route';
+import { body } from 'ionicons/icons';
+import { useState } from 'react';
+import moment from 'moment';
 
 const PersonalizedTask = () => {
+const [taskName, setTaskName] = useState("");
+const [taskPlantName, setTaskPlantName] = useState("");
+const [taskDate, setTaskDate] = useState(moment().format('L') );
 
-  const getPlant = () => {
+const getPlant = () => {
     const plant = [
       {
         name: "Aloe Vera",
@@ -69,7 +76,12 @@ const PersonalizedTask = () => {
   }
 
   const addTask = () => {
-    console.log("hey");
+    console.log(taskDate  );
+    create('tasks', {
+      name: taskName,
+      lastAction: taskDate,
+      uuidPlant:'e5a70cba-ca26-4c3c-8e62-ff218533c989'
+    })
   }
 
   return (
@@ -78,22 +90,19 @@ const PersonalizedTask = () => {
       <IonContent>
         <div className='container-form'>
           <IonLabel className='label-form'>Nom de la tâche</IonLabel>
-          <IonInput className='custom-input'></IonInput>
+          <IonInput className='custom-input' onBlur={(e) => setTaskName(e.target.value)}></IonInput>
           <IonLabel className='label-form'>Sélectionner la date</IonLabel>
           <IonDatetimeButton datetime="datetime" className="ion-select-date-form" ></IonDatetimeButton>
           <IonModal keepContentsMounted={true}>
-            <IonDatetime id="datetime" presentation="date"></IonDatetime>
+            <IonDatetime id="datetime" presentation="date"  onBlur={(e) => setTaskDate(e.target.value)}></IonDatetime>
           </IonModal>
           <IonLabel className='label-form'>Sélectionner votre plante</IonLabel>
           <div className="ion-select-form">
-            <Select data={arrayPlantName()} defaultValue={firstPlantName()} handleClick={(e) => console.log(e.target.value)} />
+            <Select data={arrayPlantName()} defaultValue={firstPlantName()} handleClick={(e) => setTaskPlantName(e.target.value)} onBlur={(e) => setTaskName(e.target.value)} />
           </div>
-          <IonLabel className='label-form'>Sélectionner la zone</IonLabel>
-          <div className="ion-select-form">
-            <Select data={arrayZoneName()} defaultValue={firstZoneName()} handleClick={(e) => console.log(e.target.value)} />
-          </div>
+        
           <div className='container-button'>
-            <IonButton className='button-form' expand="block" fill="clear" href='/dashboard' onClick={() => addTask()}>Ajouter</IonButton>
+            <IonButton className='button-form' expand="block" fill="clear"  onClick={() => addTask()}>Ajouter</IonButton>
             <IonButton className='button-form' expand="block" fill="clear" href='/dashboard'>Annuler</IonButton>
           </div>
         </div>
