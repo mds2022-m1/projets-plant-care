@@ -9,11 +9,15 @@ import { Plant } from './entity/Plant';
 import { Task } from './entity/Task';
 import { User } from './entity/User';
 import { PlantModule } from './plant/plant.module';
+import { TaskModule } from './task/task.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot(DBConfig),
-    PlantModule
+    PlantModule,
+    UserModule,
+    TaskModule,
   ],
   controllers: [
     AppController
