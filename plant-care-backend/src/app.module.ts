@@ -8,6 +8,7 @@ import { Place } from './entity/Place';
 import { Plant } from './entity/Plant';
 import { Task } from './entity/Task';
 import { User } from './entity/User';
+import { PlaceModule } from './place/place.module';
 import { PlantModule } from './plant/plant.module';
 import { TaskModule } from './task/task.module';
 import { UserModule } from './user/user.module';
@@ -18,6 +19,7 @@ import { UserModule } from './user/user.module';
     PlantModule,
     UserModule,
     TaskModule,
+    PlaceModule,
   ],
   controllers: [
     AppController
