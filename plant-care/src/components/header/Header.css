@@ -38,3 +38,18 @@ ion-modal#example-modal {
   flex-direction: row;
   justify-content: space-between;
 }
+
+.button-logo {
+  height: 100%;
+}
+
+.burger {
+  font-size: 25px;
+  translate: -18px;
+}
+
+.container-header {
+  height: 50px;
+}
+
+

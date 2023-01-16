@@ -1,4 +1,4 @@
-import { IonButton, IonButtons, IonContent, IonGrid, IonHeader, IonIcon, IonImg, IonItem, IonLabel, IonList, IonMenu, IonMenuButton, IonModal, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonButton, IonHeader, IonIcon, IonItem, IonLabel, IonList, IonModal, IonToolbar } from '@ionic/react';
 import { menu } from 'ionicons/icons';
 import './Header.css';
 
@@ -18,13 +18,13 @@ const Header: React.FC = () => {
   return (
     <>
       <IonHeader>
-        <IonToolbar color="gunmetal">
+        <IonToolbar color="gunmetal" className='container-header'>
           <div className='container'>
             <div>
-              <IonButton fill="clear" id="open-custom-dialog"><IonIcon icon={menu} color="gold" /></IonButton>
+              <IonButton fill="clear" id="open-custom-dialog" className='burger'><IonIcon icon={menu} color="gold" /></IonButton>
             </div>
             <div className="logo-place">
-              {PlantCareLogo(50)}
+              <IonButton href="/dashboard" fill="clear" className="button-logo">{PlantCareLogo(40)}</IonButton>
             </div>
           </div>
         </IonToolbar>
@@ -42,6 +42,9 @@ const Header: React.FC = () => {
             </IonItem>
             <IonItem button={true} detail={false} onClick={dismiss}>
               <IonLabel>Contact</IonLabel>
+            </IonItem>
+            <IonItem button={true} detail={false} onClick={dismiss}>
+              <IonLabel>Paramètres</IonLabel>
             </IonItem>
           </IonList>
         </div>

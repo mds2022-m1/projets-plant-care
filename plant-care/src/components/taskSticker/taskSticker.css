@@ -1,0 +1,83 @@
+.task {
+    color: var(--ion-color-mountain);
+    font-size: large;
+    display: flex;
+    align-items: center;    
+    padding-bottom: 2px;
+}
+
+ion-icon {
+    margin-right: 0.5rem;
+}
+
+ion-card {
+    height:110px;
+    border-radius: 10px;
+}
+
+ion-col {
+    padding: 0px;
+    padding-top: 3px;
+}
+
+.container-sticker {
+    min-width: 325px;
+}
+
+ion-card-header {
+    padding-bottom: 0;
+    padding-top: 0;
+}
+
+.picture {
+    border: 3px solid var(--ion-color-gold);
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.date {
+    color: white;
+    font-size: medium;
+    margin-bottom: 0px;
+}
+
+.plant-name {
+    color: var(--ion-color-gold);
+    font-size: large;
+}
+
+.contain-picture {
+    width: 65px;
+    padding-right: 10px;
+    padding-top: 6px;
+}
+
+.zone {
+    color: white;
+    font-size: small;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.container-text {
+    padding-left: 0px;
+}
+
+.late {
+    color: var(--ion-color-purple);
+    padding-left: 10px;
+    font-size: small;
+}
+
+.check-mark {
+    font-size: 30px;
+    position: absolute;
+    right:10px;
+    z-index: 5;
+}
+
+.click-checkmark {
+    font-size: 30px;
+    translate: -38px -10px
+}
