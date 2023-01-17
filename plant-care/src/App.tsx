@@ -32,6 +32,8 @@ import Dashboard from './pages/dashboard/Dashboard';
 import LastPage from './pages/lastPage/LastPage';
 import PersonalizedTask from './pages/personalizedTask/PersonalizedTask';
 import AddZone from './pages/addZone/AddZone';
+import PlantByZonePage from './pages/plantByZonePage/PlantByZonePage';
+import SeeYourPlantPage from './pages/seeYourPlantPage/SeeYourPlantPage';
 
 setupIonicReact();
 
@@ -66,10 +68,16 @@ const App: React.FC = () => (
           <Route path="/add-zone">
             <AddZone />
           </Route>
+          <Route path="/zone/plants">
+            <PlantByZonePage />
+          </Route>
+          <Route path="/plant">
+            <SeeYourPlantPage />
+          </Route>
           <Route exact path="/">
             <Route
               exact
-              path="/dashboard"
+              path="/"
               render={() => {
                 return isAuthed ? <Dashboard/> : <LogPage />;
               }}

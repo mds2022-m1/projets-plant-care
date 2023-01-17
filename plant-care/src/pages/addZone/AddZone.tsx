@@ -1,8 +1,10 @@
 import {  IonContent, IonPage } from '@ionic/react';
 import './AddZone.css';
 import HeaderReturn from '../../components/headerReturn/HeaderReturn';
+import { listZone } from '../../enum/ZoneEnum';
 
 const AddZone = () => {
+
 
   return (
     <IonPage>
