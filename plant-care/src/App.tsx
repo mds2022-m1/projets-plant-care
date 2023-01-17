@@ -34,6 +34,7 @@ import PersonalizedTask from './pages/personalizedTask/PersonalizedTask';
 import AddZone from './pages/addZone/AddZone';
 import PlantByZonePage from './pages/plantByZonePage/PlantByZonePage';
 import SeeYourPlantPage from './pages/seeYourPlantPage/SeeYourPlantPage';
+import EditYourPlantPage from './pages/editYourPlantPage/EditYourPlantPage';
 
 setupIonicReact();
 
@@ -43,46 +44,49 @@ const isAuthed = true;
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
-        <IonRouterOutlet>
-          <Route exact path="/log">
-            <LogPage />
-          </Route>
-          <Route exact path="/login">
-            <LogIn />
-          </Route>
-          <Route path="/signup">
-            <SignUp />
-          </Route>
-          <Route path="/plants">
-            <PlantPage />
-          </Route>
-          <Route path="/dashboard">
-            <Dashboard />
-          </Route>
-          <Route path="/more">
-            <LastPage />
-          </Route>
-          <Route path="/personalized-task">
-            <PersonalizedTask />
-          </Route>
-          <Route path="/add-zone">
-            <AddZone />
-          </Route>
-          <Route path="/zone/plants">
-            <PlantByZonePage />
-          </Route>
-          <Route path="/plant">
-            <SeeYourPlantPage />
-          </Route>
-          <Route exact path="/">
-            <Route
-              exact
-              path="/"
-              render={() => {
-                return isAuthed ? <Dashboard/> : <LogPage />;
-              }}
-            />          </Route>
-        </IonRouterOutlet>
+      <IonRouterOutlet>
+        <Route exact path="/log">
+          <LogPage />
+        </Route>
+        <Route exact path="/login">
+          <LogIn />
+        </Route>
+        <Route path="/signup">
+          <SignUp />
+        </Route>
+        <Route path="/plants">
+          <PlantPage />
+        </Route>
+        <Route path="/dashboard">
+          <Dashboard />
+        </Route>
+        <Route path="/more">
+          <LastPage />
+        </Route>
+        <Route path="/personalized-task">
+          <PersonalizedTask />
+        </Route>
+        <Route path="/add-zone">
+          <AddZone />
+        </Route>
+        <Route path="/zone/plants">
+          <PlantByZonePage />
+        </Route>
+        <Route path="/plant">
+          <SeeYourPlantPage />
+        </Route>
+        <Route path='/edit/plant'>
+          <EditYourPlantPage />
+        </Route>
+        <Route exact path="/">
+          <Route
+            exact
+            path="/"
+            render={() => {
+              return isAuthed ? <Dashboard /> : <LogPage />;
+            }}
+          />          </Route>
+      </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>
 );

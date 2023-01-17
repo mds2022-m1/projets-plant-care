@@ -10,5 +10,5 @@ export const listZone = [
     { id: 9, name: 'Terrasse', icon: '&#xea42;', className: 'material-icons' }, //deck
     { id: 10, name: 'Jardin', icon: '&#xe406;', className: 'material-icons' }, //nature
     { id: 11, name: 'Balcon', icon: '&#xe58f;', className: 'material-icons' }, //balcony
-    { id: 12, name: 'Personnalisé', icon: '&#xe3e3;', className: 'material-icons' }, //filter vintage
+    { id: 12, name: 'Personnalisée', icon: '&#xe3e3;', className: 'material-icons' }, //filter vintage
 ];

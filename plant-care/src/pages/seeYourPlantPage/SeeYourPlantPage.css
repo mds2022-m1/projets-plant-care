@@ -1,0 +1,51 @@
+.content-your-plant {
+    background-color: var(--ion-color-gunmetal-tint);
+    width: 100%;
+    height: 100%;
+}
+
+.icon-edit {
+    color: var(--ion-color-gold);
+    font-size: 45px;
+}
+
+.header-your-plant {
+    display: flex;
+    justify-content: end;
+    padding-top: 5px;
+    padding-right: 5px;
+}
+
+ion-fab {
+    translate: 5px 5px;
+}
+
+.contain-picture-your-plant {
+    width: 50%;
+}
+
+.body-your-plant {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 30px 30px 30px;
+}
+
+.title-your-plant {
+    color: var(--ion-color-gold);
+    font-size: 30px;
+    padding-top: 10px;
+}
+
+.line-your-plant {
+    margin-top: 15px;
+    height: 2px;
+    background: var(--ion-color-gold);
+    width: 100%;
+}
+
+  .ion-accordion {
+    width: 100%;
+    color: var(--ion-color-gunmetal);
+  }

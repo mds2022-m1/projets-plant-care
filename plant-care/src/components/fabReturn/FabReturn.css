@@ -6,12 +6,9 @@
     justify-content: center;
   }
 
-  ion-fab {
-    translate: 5px -7px;
-    
-  }
 
   .button-size {
     width: 35px;
     height: 35px;
+    translate: 0px -11px;
   }
