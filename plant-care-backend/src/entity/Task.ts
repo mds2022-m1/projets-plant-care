@@ -17,9 +17,6 @@ export class Task {
     name: string
 
     @Column()
-    note: string
-
-    @Column()
     frequencyType: string
 
     @Column()

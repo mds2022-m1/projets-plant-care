@@ -17,7 +17,10 @@ export class Plant {
         type: "varchar",
         length: 20,
         nullable: false})
-    name: string        
+    name: string     
+    
+    @Column()
+    note: string   
 
     @Column({
         type: "varchar",

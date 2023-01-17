@@ -31,6 +31,7 @@ AppDataSource.initialize()
         const plant = new Plant()
         plant.uuidPlace = place
         plant.name = 'tulipe'
+        plant.note = 'bien arroser le pied'
         plant.picture = 'image.png'
         
         await AppDataSource.manager.save(plant)
@@ -41,7 +42,6 @@ AppDataSource.initialize()
         const task = new Task()
         task.uuidPlant = plant
         task.name = 'arrosage'
-        task.note = 'bien arroser le pied'
         task.frequencyType = 'Month/Year/Day'
         task.lastAction = date
         task.month = '[2.3.4]'

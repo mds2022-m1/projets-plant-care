@@ -2,7 +2,7 @@ import { IonButton, IonContent, IonDatetime, IonDatetimeButton, IonInput, IonLab
 import './PersonalizedTask.css';
 import HeaderReturn from '../../components/headerReturn/HeaderReturn';
 import Select from '../../components/select/Select';
-import { create } from '../../axios/Route';
+import { create, get, getbyid, getPlantNet } from '../../axios/Route';
 import { body } from 'ionicons/icons';
 import { useState } from 'react';
 import moment from 'moment';
@@ -10,7 +10,7 @@ import moment from 'moment';
 const PersonalizedTask = () => {
 const [taskName, setTaskName] = useState("");
 const [taskPlantName, setTaskPlantName] = useState("");
-const [taskDate, setTaskDate] = useState(moment().format('L') );
+const [taskDate, setTaskDate] = useState(moment().format('Y-MM-D HH:mm:SS') );
 
 const getPlant = () => {
     const plant = [
@@ -80,8 +80,35 @@ const getPlant = () => {
     create('tasks', {
       name: taskName,
       lastAction: taskDate,
-      uuidPlant:'e5a70cba-ca26-4c3c-8e62-ff218533c989'
+      uuidPlant:'ef49faef-9678-11ed-801b-00d86184e0c2'
     })
+  }
+  const getPLantByPlantNet = () => {
+    get('https://my.plantnet.org/images/image_1.jpeg')
+  }
+  const getPlants = () => {
+    get('plants')
+  }
+  const getPlantsUUID = () => {
+    getbyid('plants', '59411263-9679-11ed-801b-00d86184e0c2' /*uuid*/)
+  }
+  const getTasks = () => {
+    get('tasks')
+  }
+  const getTasksUUID = () => {
+    getbyid('tasks', '09472732-967a-11ed-801b-00d86184e0c2' /*uuid*/)
+  }
+  const getUsers = () => {
+    get('users')
+  }
+  const getUsersUUID = () => {
+    getbyid('users', '527c2859-a256-44ff-bc2a-d91879a39218' /*uuid*/)
+  }
+  const getPlaces = () => {
+    get('places')
+  }
+  const getPlacesUUID = () => {
+    getbyid('places', '29337279-0ab3-4d7a-bb9e-5da565e19084' /*uuid*/)
   }
 
   return (
@@ -102,7 +129,7 @@ const getPlant = () => {
           </div>
         
           <div className='container-button'>
-            <IonButton className='button-form' expand="block" fill="clear"  onClick={() => addTask()}>Ajouter</IonButton>
+            <IonButton className='button-form' expand="block" fill="clear"  onClick={() => getPlacesUUID()}>Ajouter</IonButton>
             <IonButton className='button-form' expand="block" fill="clear" href='/dashboard'>Annuler</IonButton>
           </div>
         </div>

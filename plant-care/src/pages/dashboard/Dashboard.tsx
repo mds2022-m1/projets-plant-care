@@ -8,6 +8,7 @@ import TaskSticker from '../../components/taskSticker/taskSticker';
 import { useEffect, useState } from 'react';
 import TaskStickerToDelete from '../../components/taskStickerToDelete/TaskStickerToDelete';
 import moment from 'moment';
+import { deleted } from '../../axios/Route';
 
 const Dashboard: React.FC = () => {
 
