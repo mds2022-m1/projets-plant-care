@@ -1,6 +1,7 @@
 import { IonAccordion, IonAccordionGroup, IonContent, IonItem, IonLabel, IonPage, IonTitle } from '@ionic/react';
 import { useEffect, useState } from 'react';
 import FabReturn from '../../components/fabReturn/FabReturn';
+import FrequencyTaskSticker from '../../components/frequencyTaskSticker/FrequencyTaskSticker';
 import './SeeYourPlantPage.css';
 
 const SeeYourPlantPage: React.FC = () => {
@@ -66,15 +67,15 @@ const SeeYourPlantPage: React.FC = () => {
         const task = [{
             uuidPlant: 1,
             name: "Arroser",
-            frequencyType: "Jour",
+            frequencyType: "jours",
             lastAction: new Date(),
-            month: "Janvier-Février-Mars-Avril",
+            month: "Janvier - Février - Mars - Avril",
             actionFrequency: 1
         },
         {
-            uuidPlant: 2,
+            uuidPlant: 1,
             name: "Rempoter",
-            frequencyType: "Année",
+            frequencyType: "ans",
             lastAction: new Date(),
             month: "",
             actionFrequency: 3
@@ -95,7 +96,7 @@ const SeeYourPlantPage: React.FC = () => {
                         <div className="contain-picture-your-plant">
                             <img alt={plant.name} src={plant.picture} className="picture"></img>
                         </div>
-                        <IonTitle className='title-your-plant'>{plant.name}</IonTitle>
+                        <div className='title-your-plant'>{plant.name}</div>
                         <div className="line-your-plant"></div>
                         <IonAccordionGroup expand="inset" className="ion-accordion">
                             <IonAccordion value="first">
@@ -103,7 +104,13 @@ const SeeYourPlantPage: React.FC = () => {
                                     <IonLabel>Liste des tâches</IonLabel>
                                 </IonItem>
                                 <div className="ion-padding" slot="content">
-                                    {taskList()}
+                                    {getTaskFromId().map((task) => {
+                                        return (
+                                        <FrequencyTaskSticker name={task.name} frequencyType={task.frequencyType} lastAction={task.lastAction} month={task.month} actionFrequency={task.actionFrequency} onClick={(e:any) => console.log(e)} taskId={task.uuidPlant} key={task.uuidPlant + task.name}/>
+                                        )
+                                    })
+                                    }
+                                    Ajouter une tâche
                                 </div>
                             </IonAccordion>
                             <IonAccordion value="second">

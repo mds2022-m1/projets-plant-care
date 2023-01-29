@@ -1,0 +1,53 @@
+.task-frequency-container {
+    background-color: var(--ion-color-gunmetal);
+    margin-bottom: 3.5px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.task-frequency-name {
+    color: white;
+    padding: 5px 10px 5px 10px;
+}
+
+.task-frequency-space {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3px;
+}
+
+.task-frequency {
+    color: white;
+    padding: 5px 10px 5px 10px;
+}
+
+.task-frequency-middle {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.task-frequency-month {
+    color: var(--ion-color-mountain);
+}
+
+.icon {
+    color: var(--ion-color-gold);
+    font-size: 25px;
+}
+
+.modal-container {
+    background-color: var(--ion-color-gunmetal);
+    width: 100%;
+    height: 100%;
+}
+
+.logo-end {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding: 10px;
+}
