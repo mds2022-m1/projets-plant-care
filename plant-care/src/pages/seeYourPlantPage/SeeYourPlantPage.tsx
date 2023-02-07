@@ -1,15 +1,19 @@
-import { IonAccordion, IonAccordionGroup, IonContent, IonItem, IonLabel, IonPage, IonTitle } from '@ionic/react';
+import { IonButton, IonAccordion, IonAccordionGroup, IonContent, IonItem, IonLabel, IonPage, IonTitle } from '@ionic/react';
 import { useEffect, useState } from 'react';
 import FabReturn from '../../components/fabReturn/FabReturn';
 import FrequencyTaskSticker from '../../components/frequencyTaskSticker/FrequencyTaskSticker';
 import './SeeYourPlantPage.css';
+import { create, get, getbyid, getPlantNet } from '../../axios/Route';
+import SeeYourPlant from '../../components/bdd/SeeYourPlant';
 
 const SeeYourPlantPage: React.FC = () => {
     const getId = () => {
-        const urlParams = new URLSearchParams(window.location.search);
-        const myParam = urlParams.get('id');
-        return myParam;
-    };
+        const url = window.location.search;
+        const idParam = 'id=';
+        const idIndex = url.indexOf(idParam) + idParam.length;
+        console.log(url.substr(idIndex))
+        return url.substr(idIndex);
+      };
 
     const [plant, setPlant] = useState<Plant>({} as Plant);
     const [tasks, setTasks] = useState<Task[]>([]);
@@ -93,6 +97,7 @@ const SeeYourPlantPage: React.FC = () => {
                         <a className='material-icons icon-edit' href={linkToEdit()}>&#xe745;</a>
                     </div>
                     <div className='body-your-plant'>
+                    <SeeYourPlant />
                         <div className="contain-picture-your-plant">
                             <img alt={plant.name} src={plant.picture} className="picture"></img>
                         </div>
