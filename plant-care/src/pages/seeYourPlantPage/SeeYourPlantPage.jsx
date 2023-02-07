@@ -4,9 +4,8 @@ import FabReturn from '../../components/fabReturn/FabReturn';
 import FrequencyTaskSticker from '../../components/frequencyTaskSticker/FrequencyTaskSticker';
 import './SeeYourPlantPage.css';
 import { create, get, getbyid, getPlantNet } from '../../axios/Route';
-import SeeYourPlant from '../../components/bdd/SeeYourPlant';
 
-const SeeYourPlantPage: React.FC = () => {
+const SeeYourPlantPage = () => {
     const getId = () => {
         const url = window.location.search;
         const idParam = 'id=';
@@ -15,23 +14,33 @@ const SeeYourPlantPage: React.FC = () => {
         return url.substr(idIndex);
       };
 
-    const [plant, setPlant] = useState<Plant>({} as Plant);
-    const [tasks, setTasks] = useState<Task[]>([]);
-
-    type Plant = {
-        id: number;
-        name: string;
-        picture: string;
-        zone: string;
-    }
+    const [plant, setPlant] = useState({});
+    const [tasks, setTasks] = useState([]);
 
     useEffect(() => {
-        const plant = getMyPlant();
+        const plant = getbyid('plants', getId()).then(res => {
+            console.log(res)
+            const data = {
+                id:res.uuid,
+                name:res.name,
+                note:res.note,
+                picture:res.picture,
+            }
+            setPlant(data)
+        });
+
         setPlant(plant);
 
         const tasks = getTaskFromId();
         setTasks(tasks);
     }, []);
+
+    const getMyPlants = () => {
+        console.log(plant)
+        return plant;
+      };
+
+
 
     const getMyPlant = () => {
         const id = getId();
@@ -55,15 +64,6 @@ const SeeYourPlantPage: React.FC = () => {
 
     const linkToEdit = () => {
         return `/edit/plant?id=${getId}`;
-    }
-
-    type Task = {
-        uuidPlant: number;
-        name: string;
-        frequencyType: string;
-        lastAction: Date;
-        month: string;
-        actionFrequency: number;
     }
 
     const getTaskFromId = () => {
@@ -97,7 +97,7 @@ const SeeYourPlantPage: React.FC = () => {
                         <a className='material-icons icon-edit' href={linkToEdit()}>&#xe745;</a>
                     </div>
                     <div className='body-your-plant'>
-                    <SeeYourPlant />
+                    
                         <div className="contain-picture-your-plant">
                             <img alt={plant.name} src={plant.picture} className="picture"></img>
                         </div>

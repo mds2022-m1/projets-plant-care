@@ -1,18 +1,49 @@
 import { IonContent, IonPage } from '@ionic/react';
-import React,{ useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import FabAddPlant from '../../components/fabAddPlant/FabAddPlant';
 import Footer from '../../components/footer/Footer';
 import Header from '../../components/header/Header';
 import Select from '../../components/select/Select';
 import './PlantPage.css';
 import { create, get, getbyid, getPlantNet } from '../../axios/Route';
-import { IonButton, IonDatetime, IonDatetimeButton, IonInput, IonLabel, IonModal } from '@ionic/react';
-import { response } from 'express';
-import Plants from '../../components/bdd/Plant';
 
 const PlantPage: React.FC = () => {
+  const getId = () => {
+    const url = window.location.search;
+    const idParam = 'id=';
+    const idIndex = url.indexOf(idParam) + idParam.length;
+    console.log(url.substr(idIndex))
+    return url.substr(idIndex);
+  };
+
+const [plants, setPlants] = useState<Plant[]>([]);
+
+useEffect(() => {
+    const plants = getbyid('plants', getId()).then(res => {
+        console.log(res)
+        const data = {
+            id:res.uuid,
+            name:res.name,
+            note:res.note,
+            picture:res.picture,
+        }
+        setPlants(data)
+    });
+    setPlants(plants);
+}, []);
+
+
+
+
+
+
+
+
+
+
+
+
   const [selectedButton, setSelectedButton] = useState<string>("Par zone");
-  const [plants, setPlants] = useState<Plant[]>([]);
   const [query, setQuery] = useState('')
 
   const handleChange = (e: any) => {
@@ -30,7 +61,6 @@ const PlantPage: React.FC = () => {
     const plant = getPlant();
     setPlants(plant);
   }, []);
-
 
   const getPlant = () => {
     return [
@@ -116,10 +146,8 @@ const PlantPage: React.FC = () => {
     return (
       <div className='zone-container'>
         <input type="search" value={query} onChange={handleChange} placeholder="Rechercher..." className="search-input"></input>
-
         <div className="plant-list">
-        <Plants />
-        {query === '' ?
+          {query === '' ?
           getPlant().map((plant) => {
             return (
               <div className="container-plant-list">
@@ -221,7 +249,6 @@ const PlantPage: React.FC = () => {
     <IonPage>
       <Header />
       <IonContent>
-
         <div className='title-page'>Mes plantes</div>
         <div className='date-line'>
           <div className="ion-select">
