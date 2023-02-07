@@ -1,0 +1,89 @@
+.title-page {
+    font-size: 2rem;
+    margin: 25px 0px 0px 25px;
+    color: var(--ion-color-gunmetal);
+}
+
+.zone-container {
+    margin: 10px 20px 0px 20px;
+}
+
+.zone-title {
+    font-size: 1rem;
+    padding: 10px 10px 5px 10px;
+    color: var(--ion-color-gold);
+    background-color: var(--ion-color-gunmetal);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.zone-link {
+    color: var(--ion-color-mountain)
+}
+
+.plant-container {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid var(--ion-color-gunmetal);
+    border-radius: 0px 0px 5px 5px;
+    padding: 10px;
+}
+
+.plant-picture {
+    width: 80px;
+    height: 80px;
+    border: 2px solid var(--ion-color-gold);
+}
+
+.plant-number {
+    width: 80px;
+    height: 80px;
+    border: 2px solid var(--ion-color-gold);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--ion-color-gunmetal-tint);
+    color: var(--ion-color-gold);
+}
+
+.search-input {
+    padding: 8px;
+    border-color: var(--ion-color-gunmetal);
+    margin-bottom: 12px;
+}
+
+.plant-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.container-plant-list {
+    margin: 8px 0px 0px 0px;
+    padding: 3px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-width: 1px 0px;
+    border-color: var(--ion-color-gunmetal);
+    border-style: solid;
+}
+
+.plant-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.plant-name-list {
+    color: var(--ion-color-gunmetal);
+    font-size: 1.2rem;
+}
+
+.plant-zone-list {
+    color: var(--ion-color-gunmetal);
+    font-size: 0.8rem;
+}

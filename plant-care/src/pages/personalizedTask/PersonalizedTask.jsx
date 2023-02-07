@@ -10,7 +10,7 @@ import moment from 'moment';
 const PersonalizedTask = () => {
 const [taskName, setTaskName] = useState("");
 const [taskPlantName, setTaskPlantName] = useState("");
-const [taskDate, setTaskDate] = useState(moment().format('Y-MM-D HH:mm:SS') );
+const [taskDate, setTaskDate] = useState(moment().format('Y-MM-DD HH:mm:SS') );
 
 const getPlant = () => {
     const plant = [
@@ -80,7 +80,7 @@ const getPlant = () => {
     create('tasks', {
       name: taskName,
       lastAction: taskDate,
-      uuidPlant:'ef49faef-9678-11ed-801b-00d86184e0c2'
+      uuidPlant:'cf01b828-0f59-445d-8a8a-0bc0a0f9ccc5'
     })
   }
   const getPLantByPlantNet = () => {
@@ -129,7 +129,7 @@ const getPlant = () => {
           </div>
         
           <div className='container-button'>
-            <IonButton className='button-form' expand="block" fill="clear"  onClick={() => getPlacesUUID()}>Ajouter</IonButton>
+            <IonButton className='button-form' expand="block" fill="clear"  onClick={() => addTask()}>Ajouter</IonButton>
             <IonButton className='button-form' expand="block" fill="clear" href='/dashboard'>Annuler</IonButton>
           </div>
         </div>
