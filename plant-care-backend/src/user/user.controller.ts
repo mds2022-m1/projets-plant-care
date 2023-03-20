@@ -1,17 +1,21 @@
-import { Controller, Get, Query, Post, Body, Put, Param, Delete, Req, Res, HttpStatus, Patch } from '@nestjs/common';
-import { Response } from 'express';
+import { Controller, Get, Post, Body, Param, Delete, Patch, UseGuards } from '@nestjs/common';
 import { User } from '../entity/User';
+
 import { UserService } from './user.service';
+import * as bcrypt from 'bcryptjs';
+import { JwtAuthGuard } from '../auth/guard/jwt.guard';
 
 @Controller('users')
 export class UserController {
   constructor(private readonly userService: UserService) { }
 
   @Post()
-  public createOne(@Body() createUserRequest: User): Promise<User> {
+  public async createOne(@Body() createUserRequest: User): Promise<User> {
+    createUserRequest.password = await bcrypt.hash(createUserRequest.password, 10);
     return this.userService.createUser(createUserRequest);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get()
   public findAll(): Promise<User[]> {
     return this.userService.getUser();

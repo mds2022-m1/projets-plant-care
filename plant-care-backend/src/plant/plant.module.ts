@@ -8,9 +8,9 @@ import { PlantController } from './plant.controller';
 import { PlantService } from './plant.service';
 
 @Module({
-  controllers: [PlantController, UserController],
-  providers: [PlantService, UserService],
-  imports: [TypeOrmModule.forFeature([Plant, User])],
-  exports: [PlantService, UserService],
+  controllers: [PlantController],
+  providers: [PlantService],
+  imports: [TypeOrmModule.forFeature([Plant])],
+  exports: [PlantService],
 })
 export class PlantModule {}
