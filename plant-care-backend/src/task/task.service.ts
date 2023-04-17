@@ -21,7 +21,7 @@ export class TaskService {
     public async createTask(createTaskRequest: Task): Promise<Task> {
         const task = new Task;
         task.name = createTaskRequest.name;
-        task.note = createTaskRequest.note;
+        //task.note = createTaskRequest.note;
         task.frequencyType = createTaskRequest.frequencyType;
         task.lastAction = createTaskRequest.lastAction;
         task.month = createTaskRequest.month;
@@ -37,7 +37,7 @@ export class TaskService {
     public async updateTask(uuid: string, updateTaskRequest: Task): Promise<Task> {
         const task = new Task;
         task.name = updateTaskRequest.name;
-        task.note = updateTaskRequest.note;
+        //task.note = updateTaskRequest.note;
         task.frequencyType = updateTaskRequest.frequencyType;
         task.lastAction = updateTaskRequest.lastAction;
         task.month = updateTaskRequest.month;

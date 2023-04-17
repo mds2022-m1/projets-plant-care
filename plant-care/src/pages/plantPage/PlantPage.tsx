@@ -1,10 +1,14 @@
 import { IonContent, IonPage } from '@ionic/react';
-import { useEffect, useState } from 'react';
+import React,{ useEffect, useState } from 'react';
 import FabAddPlant from '../../components/fabAddPlant/FabAddPlant';
 import Footer from '../../components/footer/Footer';
 import Header from '../../components/header/Header';
 import Select from '../../components/select/Select';
 import './PlantPage.css';
+import { create, get, getbyid, getPlantNet } from '../../axios/Route';
+import { IonButton, IonDatetime, IonDatetimeButton, IonInput, IonLabel, IonModal } from '@ionic/react';
+import { response } from 'express';
+import Plants from '../../components/bdd/Plant';
 
 const PlantPage: React.FC = () => {
   const [selectedButton, setSelectedButton] = useState<string>("Par zone");
@@ -26,6 +30,7 @@ const PlantPage: React.FC = () => {
     const plant = getPlant();
     setPlants(plant);
   }, []);
+
 
   const getPlant = () => {
     return [
@@ -111,8 +116,10 @@ const PlantPage: React.FC = () => {
     return (
       <div className='zone-container'>
         <input type="search" value={query} onChange={handleChange} placeholder="Rechercher..." className="search-input"></input>
+
         <div className="plant-list">
-          {query === '' ?
+        <Plants />
+        {query === '' ?
           getPlant().map((plant) => {
             return (
               <div className="container-plant-list">
@@ -214,6 +221,7 @@ const PlantPage: React.FC = () => {
     <IonPage>
       <Header />
       <IonContent>
+
         <div className='title-page'>Mes plantes</div>
         <div className='date-line'>
           <div className="ion-select">
