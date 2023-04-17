@@ -1,0 +1,10 @@
+.btn-next-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.text-next {
+    padding: 5px;
+    color: var(--ion-color-gunmetal);
+}
