@@ -1,0 +1,108 @@
+.handle-content {
+  display: flex;
+  flex-direction: column;
+  padding: 35px;
+  padding-top: 5px;
+  color:white;
+}
+
+.in-line {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.line-input {
+  width: 100%;
+  border-bottom: 1px solid white;
+  --padding-bottom: 3px;
+}
+
+ion-checkbox {
+  --size: 20px;
+  --background: var(--ion-color-gunmetal);
+  --background-checked: var(--ion-color-gunmetal);
+  --color: var(--ion-color-gold);
+  --color-checked: var(--ion-color-gold);
+  --checkmark-width: 2px;
+  --checkmark-color	: var(--ion-color-gold);
+}
+
+ion-checkbox::part(container) {
+  border-radius: 3px;
+  border: 2px solid var(--ion-color-gold);
+}
+
+.overall-line {
+  margin-top: 30px;
+}
+
+.input-number {
+  text-align: center;
+  --padding-top: 0px;
+}
+
+.month-select {
+  background-color: white;
+  width: 40%;
+  border-radius: 15px;
+  border: 2px solid var(--ion-color-gold);
+  height:30px;
+  color: var(--ion-color-gunmetal);
+  text-align: center;
+  font-size: 15px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.space {
+  margin-left: 10px;
+}
+
+.space-top {
+  margin-top: 10px;
+}
+
+.date-selection {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.parent{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.child{
+  width: 25%;
+  box-sizing: border-box;
+}
+
+.text-month {
+  font-size: 15px;
+  font-weight: 500;
+  width: 70%;
+  text-align: center;
+  margin-top: 8px;
+  color: var(--ion-color-gunmetal);
+  background-color: white;
+  border: 2px solid var(--ion-color-gold);
+  border-radius: 15px;
+  height: 25px;
+}
+
+.text-month-selected {
+  font-size: 15px;
+  font-weight: 500;
+  width: 70%;
+  text-align: center;
+  margin-top: 8px;
+  color: var(--ion-color-gunmetal);
+  background-color: var(--ion-color-mountain);
+  border: 2px solid var(--ion-color-mountain);
+  border-radius: 15px;
+  height: 25px;
+}

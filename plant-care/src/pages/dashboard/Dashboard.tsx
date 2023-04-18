@@ -8,6 +8,7 @@ import TaskSticker from '../../components/taskSticker/taskSticker';
 import { useEffect, useState } from 'react';
 import TaskStickerToDelete from '../../components/taskStickerToDelete/TaskStickerToDelete';
 import moment from 'moment';
+import { deleted } from '../../axios/Route';
 
 const Dashboard: React.FC = () => {
 
@@ -107,11 +108,12 @@ const Dashboard: React.FC = () => {
       //updateTask(task);
   }
 
-  const deleteTask = (task: Task) => {
+  const deleteTask = async (task: Task) => {
     //filter the task to do
     const taskDoneFiltered = taskDone.filter((tasks) => tasks.id !== task.id);
     setTaskDone(taskDoneFiltered);
 
+    await deleted('plants', "02af40c7-03c0-4da9-a19e-5cd3639c66ad");
     //delete the task in the database
     //deleteTask(task);
   }

@@ -2,10 +2,17 @@ import { IonButton, IonContent, IonDatetime, IonDatetimeButton, IonInput, IonLab
 import './PersonalizedTask.css';
 import HeaderReturn from '../../components/headerReturn/HeaderReturn';
 import Select from '../../components/select/Select';
+import { create, get, getbyid, getPlantNet } from '../../axios/Route';
+import { body } from 'ionicons/icons';
+import { useState } from 'react';
+import moment from 'moment';
 
 const PersonalizedTask = () => {
+const [taskName, setTaskName] = useState("");
+const [taskPlantName, setTaskPlantName] = useState("");
+const [taskDate, setTaskDate] = useState(moment().format('Y-MM-DD HH:mm:SS') );
 
-  const getPlant = () => {
+const getPlant = () => {
     const plant = [
       {
         name: "Aloe Vera",
@@ -69,7 +76,39 @@ const PersonalizedTask = () => {
   }
 
   const addTask = () => {
-    console.log("hey");
+    console.log(taskDate  );
+    create('tasks', {
+      name: taskName,
+      lastAction: taskDate,
+      uuidPlant:'cf01b828-0f59-445d-8a8a-0bc0a0f9ccc5'
+    })
+  }
+  const getPLantByPlantNet = () => {
+    get('https://my.plantnet.org/images/image_1.jpeg')
+  }
+  const getPlants = () => {
+    get('plants')
+  }
+  const getPlantsUUID = () => {
+    getbyid('plants', '59411263-9679-11ed-801b-00d86184e0c2' /*uuid*/)
+  }
+  const getTasks = () => {
+    get('tasks')
+  }
+  const getTasksUUID = () => {
+    getbyid('tasks', '09472732-967a-11ed-801b-00d86184e0c2' /*uuid*/)
+  }
+  const getUsers = () => {
+    get('users')
+  }
+  const getUsersUUID = () => {
+    getbyid('users', '527c2859-a256-44ff-bc2a-d91879a39218' /*uuid*/)
+  }
+  const getPlaces = () => {
+    get('places')
+  }
+  const getPlacesUUID = () => {
+    getbyid('places', '29337279-0ab3-4d7a-bb9e-5da565e19084' /*uuid*/)
   }
 
   return (
@@ -78,22 +117,19 @@ const PersonalizedTask = () => {
       <IonContent>
         <div className='container-form'>
           <IonLabel className='label-form'>Nom de la tâche</IonLabel>
-          <IonInput className='custom-input'></IonInput>
+          <IonInput className='custom-input' onBlur={(e) => setTaskName(e.target.value)}></IonInput>
           <IonLabel className='label-form'>Sélectionner la date</IonLabel>
           <IonDatetimeButton datetime="datetime" className="ion-select-date-form" ></IonDatetimeButton>
           <IonModal keepContentsMounted={true}>
-            <IonDatetime id="datetime" presentation="date"></IonDatetime>
+            <IonDatetime id="datetime" presentation="date"  onBlur={(e) => setTaskDate(e.target.value)}></IonDatetime>
           </IonModal>
           <IonLabel className='label-form'>Sélectionner votre plante</IonLabel>
           <div className="ion-select-form">
-            <Select data={arrayPlantName()} defaultValue={firstPlantName()} handleClick={(e) => console.log(e.target.value)} />
+            <Select data={arrayPlantName()} defaultValue={firstPlantName()} handleClick={(e) => setTaskPlantName(e.target.value)} onBlur={(e) => setTaskName(e.target.value)} />
           </div>
-          <IonLabel className='label-form'>Sélectionner la zone</IonLabel>
-          <div className="ion-select-form">
-            <Select data={arrayZoneName()} defaultValue={firstZoneName()} handleClick={(e) => console.log(e.target.value)} />
-          </div>
+        
           <div className='container-button'>
-            <IonButton className='button-form' expand="block" fill="clear" href='/dashboard' onClick={() => addTask()}>Ajouter</IonButton>
+            <IonButton className='button-form' expand="block" fill="clear"  onClick={() => addTask()}>Ajouter</IonButton>
             <IonButton className='button-form' expand="block" fill="clear" href='/dashboard'>Annuler</IonButton>
           </div>
         </div>

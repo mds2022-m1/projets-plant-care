@@ -5,10 +5,50 @@ import Footer from '../../components/footer/Footer';
 import Header from '../../components/header/Header';
 import Select from '../../components/select/Select';
 import './PlantPage.css';
+import { create, get, getbyid, getPlantNet } from '../../axios/Route';
 
 const PlantPage: React.FC = () => {
+  const getId = () => {
+    const url = window.location.search;
+    const idParam = 'id=';
+    const idIndex = url.indexOf(idParam) + idParam.length;
+    console.log(url.substr(idIndex))
+    return url.substr(idIndex);
+  };
+
+const [plants, setPlants] = useState<Plant[]>([]);
+
+useEffect(() => {
+    const plants = getbyid('plants', getId()).then(res => {
+        console.log(res)
+        const data = {
+            id:res.uuid,
+            name:res.name,
+            note:res.note,
+            picture:res.picture,
+        }
+        setPlants(data)
+    });
+    setPlants(plants);
+}, []);
+
+
+
+
+
+
+
+
+
+
+
+
   const [selectedButton, setSelectedButton] = useState<string>("Par zone");
-  const [plants, setPlants] = useState<Plant[]>([]);
+  const [query, setQuery] = useState('')
+
+  const handleChange = (e: any) => {
+    setQuery(e.target.value)
+  }
 
   type Plant = {
     id: number;
@@ -27,31 +67,55 @@ const PlantPage: React.FC = () => {
       {
         id: 1,
         name: "Tulipe",
-        picture: "path/to/image",
+        picture: "assets/image/tulipe.png",
+        zone: "Chambre",
+      },
+      {
+        id: 6,
+        name: "Cerisier",
+        picture: "assets/image/tulipe.png",
+        zone: "Chambre",
+      },
+      {
+        id: 7,
+        name: "Lavandula",
+        picture: "assets/image/tulipe.png",
+        zone: "Chambre",
+      },
+      {
+        id: 8,
+        name: "Cactus",
+        picture: "assets/image/tulipe.png",
+        zone: "Chambre",
+      },
+      {
+        id: 9,
+        name: "Rose",
+        picture: "assets/image/tulipe.png",
         zone: "Chambre",
       },
       {
         id: 2,
         name: "Herbe",
-        picture: "path/to/image",
+        picture: "assets/image/tulipe.png",
         zone: "Jardin",
       },
       {
         id: 3,
         name: "Aloe Vera",
-        picture: "path/to/image",
+        picture: "assets/image/tulipe.png",
         zone: "Salle de bain",
       },
       {
         id: 4,
         name: "Dracaena",
-        picture: "path/to/image",
+        picture: "assets/image/tulipe.png",
         zone: "Bureau",
       },
       {
-        id: 1,
+        id: 5,
         name: "Lavande",
-        picture: "path/to/image",
+        picture: "assets/image/tulipe.png",
         zone: "Chambre",
       }
     ]
@@ -59,7 +123,7 @@ const PlantPage: React.FC = () => {
 
   const getEachZone = () => {
     const uniqueZones = plants.map(item => item.zone)
-    .filter((value, index, self) => self.indexOf(value) === index);
+      .filter((value, index, self) => self.indexOf(value) === index);
 
     //sort by name
     uniqueZones.sort((a, b) => {
@@ -69,38 +133,115 @@ const PlantPage: React.FC = () => {
     return uniqueZones;
   }
 
-  const content = () => {
+  const countPlantByZone = (zone: string) => {
+    return plants.filter((plant) => plant.zone === zone).length;
+  }
+
+  const linkToPlant = (id: number) => {
+    return '/plant?id=' + id;
+  }
+
+
+  const byName = () => {
     return (
-    selectedButton === "Par zone" ? (
+      <div className='zone-container'>
+        <input type="search" value={query} onChange={handleChange} placeholder="Rechercher..." className="search-input"></input>
+        <div className="plant-list">
+          {query === '' ?
+          getPlant().map((plant) => {
+            return (
+              <div className="container-plant-list">
+                <div>
+                  <div className="plant-info">
+                    <div className="contain-picture">
+                      <img alt={plant.name} src={plant.picture} className="picture"></img>
+                    </div>
+                    <div className="column">
+                      <div className="plant-name-list">
+                        {plant.name}
+                      </div>
+                      <div className="plant-zone-list">
+                        {plant.zone}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <a className='zone-link' href={linkToPlant(plant.id)}>Afficher</a>
+              </div>
+            )
+          }
+          ) : plants.filter((plantFilter) => plantFilter.name.toLowerCase().includes(query.toLowerCase())).map((plant) => {
+            return (
+              <div className="container-plant-list">
+                <div>
+                  <div className="plant-info">
+                    <div className="contain-picture">
+                    <img alt={plant.name} src={plant.picture} className="picture"></img>
+                    </div>
+                    <div className="column">
+                      <div className="plant-name-list">
+                        {plant.name}
+                      </div>
+                      <div className="plant-zone-list">
+                        {plant.zone}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <a className='zone-link' href={linkToPlant(plant.id)}>Afficher</a>
+              </div>
+            )
+          }
+          )}
+        </div>
+      </div>
+    )
+  }
+  
+  const linkToZone = (zone: string) => {
+    return `/zone/plants?zone=${zone}`
+  }
+
+  const byZone = () => {
+    return (
       <div className="zone-container">
         {getEachZone().map((zone) => {
           return (
             <div>
-            <div className="zone-title">{zone}</div>
-            <div className="plant-container">
-              {plants.filter((plantFilter) => plantFilter.zone === zone).map((plant) => {
-                return (
-                  <div className="plant">
-                    <div className="plant-name">{plant.name}</div>
-                    <div className="plant-picture">{plant.picture}</div>
-                  </div>
-                )
-              })}
+              <div className="zone-title">
+                <div>{zone}</div><a className='zone-link' href={linkToZone(zone)}>Tout afficher</a>{/** TO CHANGE*/}
+              </div>
+              <div className="plant-container">
+                {countPlantByZone(zone) > 4
+                  ? (plants.filter((plantFilter) => plantFilter.zone === zone).slice(0, 3).map((plant) => {
+                    return (
+                      <div className="plant">
+                        <img alt={plant.name} src={plant.picture} className="plant-picture"></img>
+                      </div>
+                    )
+                  })
+                  )
+                  : plants.filter((plantFilter) => plantFilter.zone === zone).map((plant) => {
+                    return (
+                      <div className="plant">
+                        <img alt={plant.name} src={plant.picture} className="plant-picture"></img>
+                      </div>
+                    )
+                  })}
+                {countPlantByZone(zone) > 4 ? <div className="plant-number">+ {countPlantByZone(zone) - 3}</div> : null}
+
               </div>
             </div>
           )
         })
         }
       </div>
-    ) : (
-      <div className="name-container">
-        <div className="name-title">Tulipe</div>
-        <div className="name-title">Herbe</div>
-        <div className="name-title">Aloe Vera</div>
-        <div className="name-title">Dracaena</div>
-        <div className="name-title">Lavande</div>
-      </div>
     )
+  }
+
+  const content = () => {
+    return (
+      selectedButton === "Par zone" ? byZone() : byName()
     )
   }
 
@@ -109,15 +250,15 @@ const PlantPage: React.FC = () => {
       <Header />
       <IonContent>
         <div className='title-page'>Mes plantes</div>
-      <div className='date-line'>
+        <div className='date-line'>
           <div className="ion-select">
-      <Select data={["Par zone", "Par nom"]} defaultValue={selectedButton} handleClick={(e: { target: { value: any; }; }) => setSelectedButton(e.target.value)}/>
-      </div>
-      </div>
-      <div>
-      {content()}
-      </div>
-      <FabAddPlant link="/add-zone"/>
+            <Select data={["Par zone", "Par nom"]} defaultValue={selectedButton} handleClick={(e: { target: { value: any; }; }) => setSelectedButton(e.target.value)} />
+          </div>
+        </div>
+        <div>
+          {content()}
+        </div>
+        <FabAddPlant link="/add-zone" />
       </IonContent>
       <Footer />
     </IonPage>
