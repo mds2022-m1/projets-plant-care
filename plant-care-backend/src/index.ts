@@ -14,11 +14,11 @@ const AppDataSource = new DataSource(DBConfig)
 AppDataSource.initialize()
     .then(async () => {
         const user = new User()
-        user.uuidGithub = 'antoine-github'
-        user.name = 'antoine'
-        user.password = '123456'
-        user.email = 'antoine@orange.fr'
-        user.avatar = '123456.png'
+        user.uuidGithub = 'admin-github'
+        user.name = 'admin'
+        user.password = 'admin'
+        user.email = 'admin@admin.admin'
+        user.avatar = 'admin.png'
         await AppDataSource.manager.save(user)
         console.log(User, "has been saved")
 
