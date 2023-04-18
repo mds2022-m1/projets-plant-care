@@ -27,9 +27,9 @@ useEffect(() => {
             note:res.note,
             picture:res.picture,
         }
-        setPlants(data)
+        //setPlants(data)
     });
-    setPlants(plants);
+    //setPlants(plants);
 }, []);
 
 
