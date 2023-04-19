@@ -21,26 +21,16 @@ const [plants, setPlants] = useState<Plant[]>([]);
 useEffect(() => {
     const plants = getbyid('plants', getId()).then(res => {
         console.log(res)
-        const data = {
+        const data: Plant[]  = [{
             id:res.uuid,
             name:res.name,
             note:res.note,
             picture:res.picture,
-        }
-        setPlants(data)
+            zone:res.zone,
+        }]
+        setPlants(data);
     });
-    setPlants(plants);
 }, []);
-
-
-
-
-
-
-
-
-
-
 
 
   const [selectedButton, setSelectedButton] = useState<string>("Par zone");
@@ -53,7 +43,8 @@ useEffect(() => {
   type Plant = {
     id: number;
     name: string;
-    picture: string;
+    picture?: string;
+    note?: string;
     zone: string;
   }
 

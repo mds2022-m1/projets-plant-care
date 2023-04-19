@@ -25,7 +25,6 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 import LogPage from './pages/logPage/LogPage';
-import LogIn from './pages/logIn/LogIn';
 import SignUp from './pages/signUp/SignUp';
 import PlantPage from './pages/plantPage/PlantPage';
 import Dashboard from './pages/dashboard/Dashboard';
@@ -35,6 +34,7 @@ import AddZone from './pages/addZone/AddZone';
 import PlantByZonePage from './pages/plantByZonePage/PlantByZonePage';
 import SeeYourPlantPage from './pages/seeYourPlantPage/SeeYourPlantPage';
 import EditYourPlantPage from './pages/editYourPlantPage/EditYourPlantPage';
+import LoginPage from './pages/logIn/login';
 
 setupIonicReact();
 
@@ -49,7 +49,7 @@ const App: React.FC = () => (
           <LogPage />
         </Route>
         <Route exact path="/login">
-          <LogIn />
+          <LoginPage />
         </Route>
         <Route path="/signup">
           <SignUp />

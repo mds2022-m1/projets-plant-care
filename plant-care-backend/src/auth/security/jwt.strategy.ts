@@ -2,6 +2,7 @@ import { Injectable } from "@nestjs/common/decorators/core/injectable.decorator"
 import { ConfigService } from "@nestjs/config/dist";
 import { PassportStrategy } from "@nestjs/passport";
 import { ExtractJwt, Strategy } from "passport-jwt";
+import { Payload } from "./payload.interface";
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy, "jwt") {
@@ -13,8 +14,7 @@ export class JwtStrategy extends PassportStrategy(Strategy, "jwt") {
         });
     }
 
-    //TODO mettre un type jwtPayload à la place du any
-    async validate(payload: any): Promise<any> {
+    async validate(payload: Payload): Promise<Payload> {
         return {
             id: payload.id,
             email: payload.email,

@@ -24,6 +24,7 @@ export class UserService {
         user.email = createUserRequest.email;
         user.password = createUserRequest.password;
         user.avatar = createUserRequest.avatar;
+        user.uuidGithub = createUserRequest.uuidGithub;
 
         await this.userRepository.save(user);
 
