@@ -80,35 +80,35 @@ const getPlant = () => {
     create('tasks', {
       name: taskName,
       lastAction: taskDate,
-      uuidPlant:'cf01b828-0f59-445d-8a8a-0bc0a0f9ccc5'
+      uuidPlant:'9ff4ac89-ca99-4b68-9a56-244fdfb86a36'
     })
   }
   const getPLantByPlantNet = () => {
-    get('https://my.plantnet.org/images/image_1.jpeg')
+    return get('https://my.plantnet.org/images/image_1.jpeg');
   }
   const getPlants = () => {
-    get('plants')
+    return get('plants');
   }
   const getPlantsUUID = () => {
-    getbyid('plants', '59411263-9679-11ed-801b-00d86184e0c2' /*uuid*/)
+    return getbyid('plants', '9ff4ac89-ca99-4b68-9a56-244fdfb86a36' /*uuid*/);
   }
   const getTasks = () => {
-    get('tasks')
+    return get('tasks')
   }
   const getTasksUUID = () => {
-    getbyid('tasks', '09472732-967a-11ed-801b-00d86184e0c2' /*uuid*/)
+    return getbyid('tasks', '09472732-967a-11ed-801b-00d86184e0c2' /*uuid*/)
   }
   const getUsers = () => {
-    get('users')
+    return get('users')
   }
   const getUsersUUID = () => {
-    getbyid('users', '527c2859-a256-44ff-bc2a-d91879a39218' /*uuid*/)
+    return getbyid('users', '527c2859-a256-44ff-bc2a-d91879a39218' /*uuid*/)
   }
   const getPlaces = () => {
-    get('places')
+    return get('places')
   }
   const getPlacesUUID = () => {
-    getbyid('places', '29337279-0ab3-4d7a-bb9e-5da565e19084' /*uuid*/)
+    return getbyid('places', '29337279-0ab3-4d7a-bb9e-5da565e19084' /*uuid*/)
   }
 
   return (
