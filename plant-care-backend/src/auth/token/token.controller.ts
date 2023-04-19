@@ -21,15 +21,18 @@ export class TokenController {
             const email = body.username;
             const password = body.password;
             const user = await this.users.findByEmail(email);
+            const user2 = "test"
             if (user && await bcrypt.compare(password, user.password)) {
                 const cr = new SignInDto();
                 cr.grant_type = "password";
                 cr.scope = "*";
                 cr.expires_in = "1h";
+                console.log({uuid : user.uuid})
                 cr.access_token = await this.jwts.sign({
                     email: user.email
+                    , uuid: user.uuid
                 }, {
-                    subject: user.email,
+                    subject: JSON.stringify(user2),
                     expiresIn: "1h",
                     secret: process.env.JWT_TOKEN_SECRET
                 }, 

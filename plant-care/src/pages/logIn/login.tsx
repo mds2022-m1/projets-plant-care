@@ -4,11 +4,13 @@ import './LogIn.css';
 
 import { signIn } from '../../axios/routeLogin';
 import { LoginService } from "./login.interface";
-import { ApolloClient, InMemoryCache, gql, useQuery } from "@apollo/client";
+import { gql, useQuery } from "@apollo/client";
+import jwt from 'jwt-decode'
+import { useHistory } from 'react-router-dom';
 
 function LoginPage() {
 
-      
+    const history = useHistory();
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
 
@@ -24,7 +26,11 @@ function LoginPage() {
             console.log({ result })
 
             localStorage.setItem('token', result.access_token);
-
+            // const payload = result.access_token.split('.');
+            const payload: any = jwt(result.access_token);
+            const url = '/afterLogin/' + payload.uuid;
+            history.push(url);
+            
         }).catch(err => {
             console.error(err);
         });
@@ -64,9 +70,9 @@ function LoginPage() {
           </div>
         ));
       }
-
+      
     return (
-        <form  >
+        <form onSubmit={submitHandler} >
             <div>
                 <label>
                     email :
@@ -95,12 +101,13 @@ function LoginPage() {
                 </label>
             </div>
             <input type="submit" value="Envoyer" />
-            {/* <button onClick={signOut}>
+            <button onClick={signOut}>
                 Deconnexion
-            </button> */}
+            </button>
             <button onClick={DisplayLocations}>
             DisplayLocations
             </button>
+                {/* <IonButton expand="block" fill="clear" href='/dashboard' >Annuler</IonButton> */}
         </form>
     );
 }

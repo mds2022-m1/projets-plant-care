@@ -11,6 +11,8 @@ import moment from 'moment';
 import { deleted } from '../../axios/Route';
 
 const Dashboard: React.FC = () => {
+  const queryParameters = new URLSearchParams(window.location.search)
+  const type = queryParameters.get("userUuid")
 
   const [taskToDo, setTaskToDo] = useState<Task[]>([]);
   const [taskDone, setTaskDone] = useState<Task[]>([]);

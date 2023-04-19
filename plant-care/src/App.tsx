@@ -36,100 +36,106 @@ import PlantByZonePage from './pages/plantByZonePage/PlantByZonePage';
 import SeeYourPlantPage from './pages/seeYourPlantPage/SeeYourPlantPage';
 import EditYourPlantPage from './pages/editYourPlantPage/EditYourPlantPage';
 import LoginPage from './pages/logIn/login';
+import AfterLogin from './pages/afterLogin/afterLogin';
 
 setupIonicReact();
 
 const isAuthed = true;
 
-// /* Don't forget to allow the access of some pages only if auth */
-// const App: React.FC = () => (
-//   <IonApp>
-//     <IonReactRouter>
-//       <IonRouterOutlet>
-//         <Route exact path="/log">
-//           <LogPage />
-//         </Route>
-//         <Route exact path="/login">
-//           <LoginPage />
-//         </Route>
-//         <Route path="/signup">
-//           <SignUp />
-//         </Route>
-//         <Route path="/plants">
-//           <PlantPage />
-//         </Route>
-//         <Route path="/dashboard">
-//           <Dashboard />
-//         </Route>
-//         <Route path="/more">
-//           <LastPage />
-//         </Route>
-//         <Route path="/personalized-task">
-//           <PersonalizedTask />
-//         </Route>
-//         <Route path="/add-zone">
-//           <AddZone />
-//         </Route>
-//         <Route path="/zone/plants">
-//           <PlantByZonePage />
-//         </Route>
-//         <Route path="/plant">
-//           <SeeYourPlantPage />
-//         </Route>
-//         <Route path='/edit/plant'>
-//           <EditYourPlantPage />
-//         </Route>
-//         <Route exact path="/">
-//           <Route
-//             exact
-//             path="/"
-//             render={() => {
-//               return isAuthed ? <Dashboard /> : <LogPage />;
-//             }}
-//           />          </Route>
-//       </IonRouterOutlet>
-//     </IonReactRouter>
-//   </IonApp>
-// );
+/* Don't forget to allow the access of some pages only if auth */
+const App: React.FC = () => (
+  <IonApp>
+    <IonReactRouter>
+      <IonRouterOutlet>
+        <Route exact path="/log">
+          <LogPage />
+        </Route>
+        <Route exact path="/login">
+          <LoginPage />
+        </Route>
+        <Route path="/signup">
+          <SignUp />
+        </Route>
+        <Route path="/plants">
+          <PlantPage />
+        </Route>
+        <Route path="/dashboard">
+          <Dashboard />
+        </Route>
+        <Route path="/more">
+          <LastPage />
+        </Route>
+        <Route path="/personalized-task">
+          <PersonalizedTask />
+        </Route>
+        <Route path="/add-zone">
+          <AddZone />
+        </Route>
+        <Route path="/zone/plants">
+          <PlantByZonePage />
+        </Route>
+        <Route path="/plant">
+          <SeeYourPlantPage />
+        </Route>
+        <Route path='/edit/plant'>
+          <EditYourPlantPage />
+        </Route>
+        <Route path='/afterLogin/:userUuid'>
+          <AfterLogin />
+        </Route>
+        <Route exact path="/">
+          <Route
+            exact
+            path="/"
+            render={() => {
+              return isAuthed ? <Dashboard /> : <LogPage />;
+            }}
+          />          </Route>
+      </IonRouterOutlet>
+    </IonReactRouter>
+  </IonApp>
+);
+
+export default App;
 // // Import everything needed to use the `useQuery` hook
-import { useQuery, gql } from '@apollo/client';
+// import { useQuery, gql } from '@apollo/client';
 
-export default function App() {
+// export default function App() {
   
-    const GetUser = gql`
-    query GetUser {
-        User {
-        id
-        name
-        password
-        email
-        }
-    }
-  `;
+//     const GetUser = gql`
+//     query GetUser {
+//         User {
+//         id
+//         name
+//         password
+//         email
+//         }
+//     }
+//   `;
   
-  function DisplayLocations() {
-    const { loading, error, data } = useQuery(GetUser);
+//   function DisplayLocations() {
+//     const { loading, error, data } = useQuery(GetUser);
   
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error : {error.message}</p>;
-  console.log({data});
-    return data.User.map(({ id, name, password, email }:any) => (
-      <div key={id}>
-        <h3>{name}</h3>
-        <h3>{password}</h3>
-        <br />
-        <p>{email}</p>
-        <br />
-      </div>
-    ));
-  }
+//     if (loading) return <p>Loading...</p>;
+//     if (error) return <p>Error : {error.message}</p>;
+//   console.log({data});
+//     return data.User.map(({ id, name, password, email }:any) => (
+//       <div key={id}>
+//         <h3>{name}</h3>
+//         <h3>{password}</h3>
+//         <br />
+//         <p>{email}</p>
+//         <br />
+//       </div>
+//     ));
+//   }
 
-  return (
-    <div>
-      <h2>My first Apollo app 🚀</h2>
-    <DisplayLocations />
-    </div>
+//   return (
+//     <div>
+//       <h2>My first Apollo app 🚀</h2>
+//     <DisplayLocations />
+//     </div>
     
-  );
+//   );
 
-}
+// }
