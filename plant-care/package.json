@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
+    "@apollo/client": "^3.7.12",
     "@capacitor/app": "4.1.1",
     "@capacitor/core": "4.5.0",
     "@capacitor/haptics": "4.1.0",
@@ -22,6 +23,7 @@
     "@types/react-router-dom": "^5.1.7",
     "await": "^0.2.6",
     "axios": "^1.2.2",
+    "graphql": "^16.6.0",
     "history": "^4.9.0",
     "ionicons": "^6.0.3",
     "moment": "^2.29.4",

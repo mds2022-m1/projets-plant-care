@@ -4,9 +4,11 @@ import './LogIn.css';
 
 import { signIn } from '../../axios/routeLogin';
 import { LoginService } from "./login.interface";
+import { ApolloClient, InMemoryCache, gql, useQuery } from "@apollo/client";
 
 function LoginPage() {
 
+      
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
 
@@ -34,8 +36,37 @@ function LoginPage() {
         localStorage.removeItem('token');
     }
 
+    const GetUser = gql`
+        query GetUser {
+            user {
+            id
+            name
+            password
+            email
+            }
+        }
+    `;
+
+    function DisplayLocations() {
+        const { loading, error, data } = useQuery(GetUser);
+      
+        if (loading) return <p>Loading...</p>;
+        if (error) return <p>Error : {error.message}</p>;
+      
+        return data.user.map(({ id, name, password, email }:any) => (
+          <div key={id}>
+            <h3>{name}</h3>
+            <h3>{password}</h3>
+            <br />
+            <b>About this location:</b>
+            <p>{email}</p>
+            <br />
+          </div>
+        ));
+      }
+
     return (
-        <form onSubmit={submitHandler} >
+        <form  >
             <div>
                 <label>
                     email :
@@ -64,8 +95,11 @@ function LoginPage() {
                 </label>
             </div>
             <input type="submit" value="Envoyer" />
-            <button onClick={signOut}>
+            {/* <button onClick={signOut}>
                 Deconnexion
+            </button> */}
+            <button onClick={DisplayLocations}>
+            DisplayLocations
             </button>
         </form>
     );
