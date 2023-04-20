@@ -67,7 +67,7 @@ const AfterLogin: React.FC = () => {
         console.log("Je créer une place avec le nom : ");
         console.log(formState.name);
 
-        const [createPlace] = useMutation(CreatePlace, {
+        const [addPlace] = useMutation(CreatePlace, {
             variables: {
                 name: formState.name,
                 userUuid: userUuid
@@ -79,7 +79,7 @@ const AfterLogin: React.FC = () => {
                 <form
                     onSubmit={(e) => {
                         e.preventDefault();
-                        AddPlace()
+                        addPlace()
                     }}
                 >
                     <div className="flex flex-column mt3">
