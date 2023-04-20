@@ -32,11 +32,16 @@ const AfterLogin: React.FC = () => {
 
     // Mutation pour modifier mon user
     const SetUser = gql`
-    mutation SetUser($uuid: uuid!) {
-        setUser(uuid: $uuid) {
-            id
-            type
-            }
+    mutation SetUser(
+        $uuid: uuid! 
+        $name: String
+        ) {
+        update_User_by_pk(
+            pk_columns: {id: $uuid},
+            _set: {name: $name}
+            ) {
+            name
+          }
         }
     `;
 
@@ -103,7 +108,7 @@ const AfterLogin: React.FC = () => {
         );
     };
 
-// Permet d'afficher les infos de mon user, le nom est moche mais pas grave :D
+    // Permet d'afficher les infos de mon user, le nom est moche mais pas grave :D
     function GetUserLogged() {
 
         const { loading, error, data } = useQuery(GetUser, {
@@ -124,41 +129,51 @@ const AfterLogin: React.FC = () => {
         ));
     }
 
-    //     function SetUserLogged() {
-    //         const uuid = window.location.pathname.split("/")[2];
+    function UpdateUser() {
 
-    //         let input: any;
-    //         const [setUserTest, { data, loading, error }] = useMutation(SetUser);
+        const [formStateUser, setFormStateUser] = useState({
+            name: ''
+        });
 
-    //         console.log({ uuid })
-    //         const { loading, error, data } = useQuery(SetUser, {
-    //             variables: { uuid: uuid },
-    //         });
+        console.log("Je créer une place avec le nom : ");
+        console.log(formStateUser.name);
 
-    //         if (loading) return null;
-    //         if (error) return `Error! ${error}`;
+        const [updateUser] = useMutation(SetUser, {
+            variables: {
+                uuid: userUuid,
+                name: formStateUser.name
+            }
+        });
 
-    //         return (
-    //             <div>
-    //                 <form
-    //                     onSubmit={e => {
-    //                         e.preventDefault();
-    //                         setUserTest({ variables: { type: input.value } });
-    //                         input.value = '';
-    //                     }}
-    //                 >
-    //                     <input
-    //                         ref={node => {
-    //                             input = node;
-    //                         }}
-    //                     />
-    //                     <button type="submit">Add Todo</button>
-    //                 </form>
-    //             </div>
-    //         );
-    //     }
-    // }
-    
+        return (
+            <div>
+                <form
+                    onSubmit={(e) => {
+                        e.preventDefault();
+                        updateUser()
+                    }}
+                >
+                    <div className="flex flex-column mt3">
+                        <input
+                            className="mb2"
+                            value={formStateUser.name}
+                            onChange={(e) =>
+                                setFormStateUser({
+                                    ...formStateUser,
+                                    name: e.target.value
+                                })
+                            }
+                            type="text"
+                            placeholder="Nouveau nom pour le user"
+                        />
+                    </div>
+                    <br />
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        );
+    }
+
 
     return (
         <>
@@ -175,6 +190,8 @@ const AfterLogin: React.FC = () => {
                     <IonLabel>Input pour l'ajout d'une place</IonLabel>
                     <br />
                     <AddPlace />
+                    <br />
+                    <UpdateUser />
                 </IonContent>
             </IonPage>
         </>
