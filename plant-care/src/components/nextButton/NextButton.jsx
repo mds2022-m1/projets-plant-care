@@ -1,12 +1,12 @@
 import { IonButton, IonIcon } from "@ionic/react";
 import { arrowRedo } from "ionicons/icons";
-import './Next.css';
+import './NextButton.css';
 
-const Next = ( nextPage, data ) => {
+const NextButton = ( {nextPage} ) => {
 
     return (
         <div className="btn-next-container">
-        <IonButton href='/' fill='clear'>
+        <IonButton href={nextPage} fill='clear'>
             <div className="text-next">Suivant</div>
             <div>
             <IonIcon slot='start' icon={arrowRedo} color='gold' size="large"/>
@@ -16,4 +16,4 @@ const Next = ( nextPage, data ) => {
     )
 }
 
-export default Next;
+export default NextButton;

@@ -1,0 +1,40 @@
+.identify-button {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin-right: 10%;
+    padding-top: 15px;
+    padding-bottom: 30px;
+}
+
+.photo-button {
+    height: 200px;
+}
+
+.padding-top-50 {
+    padding-top: 50px;
+}
+
+.padding-top-30 {
+    padding-top: 30px;
+}
+
+.empty-round {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: silver;
+    border: 2px solid var(--ion-color-gold);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.position-camera {
+    position: absolute;
+    top: 30px;
+    right: 0px;
+    font-size: xx-large;
+    color: var(--ion-color-gunmetal);
+}

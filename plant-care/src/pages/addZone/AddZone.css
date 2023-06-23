@@ -31,14 +31,42 @@
     margin-top: 20px;
 }
 
-.zone-txt {
-}
-
 ion-modal#modal-zone-perso {
     --width: fit-content;
     --min-width: 250px;
     --height: fit-content;
     --border-radius: 6px;
     --box-shadow: 0 28px 48px rgba(0, 0, 0, 0.4);
-  }
-  
+}
+
+.placeholder-zone-perso {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 25px 0px 25px;
+    margin: 10px
+}
+
+.title-zone-perso {
+    font-size: medium;
+    font-weight: 500;
+    width: 100%;
+    padding-inline: inherit;
+}
+
+.content-btn-add-zone {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 20px;
+}
+
+.btn-cancel {
+    font-size: medium;
+    font-weight: 200;
+    width: 100%;
+}
+
+.counter-perso {
+    padding: 0px 20px 0px 0px;
+}

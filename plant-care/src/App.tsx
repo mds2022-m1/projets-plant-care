@@ -35,8 +35,16 @@ import AddZone from './pages/addZone/AddZone';
 import PlantByZonePage from './pages/plantByZonePage/PlantByZonePage';
 import SeeYourPlantPage from './pages/seeYourPlantPage/SeeYourPlantPage';
 import EditYourPlantPage from './pages/editYourPlantPage/EditYourPlantPage';
+import AddPlant from './pages/addPlant/AddPlant';
+
+import { defineCustomElements } from '@ionic/pwa-elements/loader';
+
+// Call the element loader after the platform has been bootstrapped
+defineCustomElements(window);
 
 setupIonicReact();
+
+
 
 const isAuthed = true;
 
@@ -77,6 +85,9 @@ const App: React.FC = () => (
         </Route>
         <Route path='/edit/plant'>
           <EditYourPlantPage />
+        </Route>
+        <Route path='/add/plant'>
+          <AddPlant />
         </Route>
         <Route exact path="/">
           <Route

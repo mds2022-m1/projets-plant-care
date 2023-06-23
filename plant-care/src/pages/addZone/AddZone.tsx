@@ -1,14 +1,17 @@
-import { IonButton, IonContent, IonInput, IonModal, IonPage } from '@ionic/react';
+import { IonButton, IonContent, IonInput, IonModal, IonPage, IonToolbar, IonTitle, IonItem } from '@ionic/react';
 import './AddZone.css';
 import HeaderReturn from '../../components/headerReturn/HeaderReturn';
 import { listZone } from '../../enum/ZoneEnum';
 import { FocusEvent, useRef, useState } from 'react';
-import Next from '../../components/next/Next';
+import NextButton from '../../components/nextButton/NextButton';
+
+
+//TODO : ajout check input
+// empecher de fermer la modal quand on clique en dehors
 
 const AddZone = () => {
 
   const [zoneSelected, setZoneSelected] = useState<string>('');
-  const [canDismiss, setCanDismiss] = useState<boolean>(false);
 
   const zones = () => listZone.map((zone) => {
     return (
@@ -22,10 +25,10 @@ const AddZone = () => {
   });
 
   const showZoneSelected = (zoneName: string) => {
-    if (zoneSelected == '') {
+    if (zoneSelected === '') {
       setZoneSelected(zoneName);
       document.getElementById(zoneName)?.classList.toggle('zone-btn-selected');
-    } else if (zoneSelected == zoneName) {
+    } else if (zoneSelected === zoneName) {
       setZoneSelected('');
       document.getElementById(zoneName)?.classList.toggle('zone-btn-selected');
     } else {
@@ -34,12 +37,9 @@ const AddZone = () => {
       document.getElementById(zoneName)?.classList.toggle('zone-btn-selected');
     }
 
-    if (zoneName == 'Personnalisée') {
+    if (zoneName === 'Personnalisée') {
       handleChange();
     }
-
-    
-
   };
 
   const changeZoneSelected = (e: any) => {
@@ -57,29 +57,40 @@ const AddZone = () => {
 
   const modalPersonnalise = () => {
     return (
-    <IonModal id="modal-zone-perso" isOpen={isOpen}>
-      <div className="">
-        Ajouter une zone personnalisée
-        <IonInput placeholder="Nom de la zone" onBlur={(e) => changeZoneSelected(e)}></IonInput>
-        <Next />
-        <IonButton onClick={() => handleChange()}>Annuler</IonButton>
-      </div>
-    </IonModal>
+      <IonModal id="modal-zone-perso" isOpen={isOpen}>
+        <div className="">
+          <IonToolbar color='gunmetal'>
+            <IonTitle color='gold' className='title-zone-perso'>
+              Ajouter une zone personnalisée
+            </IonTitle>
+          </IonToolbar>
+
+          <IonItem counter={true} className='counter-perso'>
+            <div className="placeholder-zone-perso">
+              <IonInput placeholder="Nom de la zone" onChange={(e) => changeZoneSelected(e)} type="text" minlength={3} maxlength={20}></IonInput>
+            </div>
+          </IonItem>
+          <div className="content-btn-add-zone">
+            <IonButton onClick={() => handleChange()} className='button-form btn-cancel' color='mountain'>Annuler</IonButton>
+            <NextButton nextPage={"/add/plant?zone=" + zoneSelected} />
+          </div>
+        </div>
+      </IonModal>
     )
   }
 
-    return (
-      <IonPage>
-        <HeaderReturn pageToReturn="/plants" title="Choisir une zone" />
-        <IonContent>
-          <div className='zone-ctnr'>
-            {zones()}
-            {zoneSelected == '' ? <div></div> : <Next />}
-            {modalPersonnalise()}
-          </div>
-        </IonContent>
-      </IonPage>
-    );
-  };
+  return (
+    <IonPage>
+      <HeaderReturn pageToReturn="/plants" title="Choisir une zone" />
+      <IonContent>
+        <div className='zone-ctnr'>
+          {zones()}
+          {zoneSelected === '' || zoneSelected === 'Personnalisée' ? <div></div> : <NextButton nextPage={"/add/plant?zone=" + zoneSelected} />}
+          {modalPersonnalise()}
+        </div>
+      </IonContent>
+    </IonPage>
+  );
+};
 
-  export default AddZone;
+export default AddZone;
